@@ -1,0 +1,67 @@
+// Header Account Nav Dropdown contents
+// ===
+//
+
+
+// Dependencies
+// ---
+@import 'styles/variables';
+@import 'styles/mixins/ellipsis';
+
+
+// Root Component
+// ---
+
+.c-header-account-nav {
+    .c-user-balance-summary {
+        margin-right: -$xlarge-unit;
+        margin-left: -$xlarge-unit;
+    }
+}
+
+// Header
+// ---
+.c-header-account-nav__header {
+    margin-bottom: $xlarge-unit;
+    display: flex;
+    align-items: center;
+}
+
+// User Greeting
+// ---
+
+.c-header-account-nav__greeting {
+    @include ellipsis;
+
+    flex: 1 1 auto;
+    margin-right: $unit;
+
+    font-weight: $font-weight-demibold;
+}
+
+
+// Dropdown Content Area
+// ---
+
+.c-header-account-nav__section {
+    margin-right: -$xlarge-unit;
+    margin-left: -$xlarge-unit;
+    padding: $xlarge-unit;
+    border-top: 1px solid $neutral-40;
+
+    background-color: $brand-color-tint;
+
+    &:last-of-type {
+        margin-bottom: -$large-unit;
+    }
+}
+
+
+// Groups List
+// ---
+
+.c-header-account-nav__group-list {
+    .c-list-preview__list-item-name {
+        @include ellipsis;
+    }
+}

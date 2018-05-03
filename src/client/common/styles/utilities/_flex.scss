@@ -1,0 +1,165 @@
+// Flexbox utilities
+// ===
+//
+// A custom css flexbox utility.
+//
+// Sources:
+// https://github.com/elussich/tachyons-flex
+// https://github.com/basscss/basscss/tree/master/modules/flexbox
+// https://github.com/suitcss/utils-flex
+
+.u-flex {
+    display: flex;
+}
+
+// At some point these should be defined with W3C CSS Custom Media Queries syntax
+// https://drafts.scsswg.org/mediaqueries/#custom-mq
+@media (min-width: 35em) {
+  .u-flex-sm { display: flex }
+}
+
+@media (min-width: 48em) {
+  .u-flex-md { display: flex }
+}
+
+@media (min-width: 64em) {
+  .u-flex-md { display: flex }
+}
+
+.u-flex--column {
+    flex-direction: column;
+}
+.u-flex--wrap {
+    flex-wrap: wrap;
+}
+
+.u-flex--items-start {
+    align-items: flex-start;
+}
+.u-flex--items-end {
+    align-items: flex-end;
+}
+.u-flex--items-center {
+    align-items: center;
+}
+.u-flex--items-baseline {
+    align-items: baseline;
+}
+.u-flex--items-stretch {
+    align-items: stretch;
+}
+
+.u-flex--justify-start {
+    justify-content: flex-start;
+}
+.u-flex--justify-end {
+    justify-content: flex-end;
+}
+.u-flex--justify-center {
+    justify-content: center;
+}
+.u-flex--justify-between {
+    justify-content: space-between;
+}
+.u-flex--justify-around {
+    justify-content: space-around;
+}
+
+.u-flex--content-start {
+    align-content: flex-start;
+}
+.u-flex--content-end {
+    align-content: flex-end;
+}
+.u-flex--content-center {
+    align-content: center;
+}
+.u-flex--content-between {
+    align-content: space-between;
+}
+.u-flex--content-around {
+    align-content: space-around;
+}
+.u-flex--content-stretch {
+    align-content: stretch;
+}
+
+.u-flex-self-start {
+    align-self: flex-start;
+}
+.u-flex-self-end {
+    align-self: flex-end;
+}
+.u-flex-self-center {
+    align-self: center;
+}
+.u-flex-self-baseline {
+    align-self: baseline;
+}
+.u-flex-self-stretch {
+    align-self: stretch;
+}
+
+
+/**
+ * Aligning with `auto` margins
+ * http://www.w3.org/TR/css-flexbox-1/#auto-margins
+ */
+
+.u-flex-expand-left {
+    margin-left: auto;
+}
+
+.u-flex-expand-right {
+    margin-right: auto;
+}
+
+/* 1. Fix for Chrome 44 bug. https://code.google.com/p/chromium/issues/detail?id=506893 */
+.u-flex-auto {
+    flex: 1 1 auto;
+    min-width: 0; /* 1 */
+    min-height: 0; /* 1 */
+}
+
+/*
+  FLEX
+ */
+
+.u-flex-g0 {
+    flex-grow: 0;
+}
+.u-flex-s0 {
+    flex-shrink: 0;
+}
+.u-flex-b0 {
+    flex-basis: 0;
+}
+.u-flex-g1 {
+    flex-grow: 1;
+}
+.u-flex-s1 {
+    flex-shrink: 1;
+}
+.u-flex-b1 {
+    flex-basis: 100%;
+}
+
+.u-flex-none {
+    flex: none;
+}
+
+.u-flex-order-0 {
+    order: 0;
+}
+.u-flex-order-1 {
+    order: 1;
+}
+.u-flex-order-2 {
+    order: 2;
+}
+.u-flex-order-3 {
+    order: 3;
+}
+.u-flex-order-last {
+    order: 99999;
+}

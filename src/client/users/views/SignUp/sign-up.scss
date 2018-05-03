@@ -1,0 +1,51 @@
+// SignUp
+// ===
+//
+// Sign Up page view
+
+@import 'styles/_variables.scss';
+
+// Root Component
+// ---
+.v-sign-up {
+    width: 100%;
+}
+
+.v-sign-up__main {
+    overflow: hidden; // CT-3714 Prevent sidescrolling on mobile due to banner tails
+    padding: $xlarge-unit * 2 $xlarge-unit 0;
+
+    background-color: $brand-color-tint;
+
+    @media (min-width: $mediumish) {
+        padding-top: $xlarge-unit * 2.5;
+    }
+}
+
+.v-sign-up__image-wrapper {
+    position: relative; // for absolutely positioned image
+
+    height: 6em;
+
+    background-color: $neutral-30;
+
+    @media (min-width: $mediumish) {
+        height: 7em;
+    }
+}
+
+
+.v-sign-up__image {
+    position: relative;
+    top: 2em;
+
+    display: block;
+    width: 53px;
+    height: 80px;
+    margin: 0 auto;
+
+    @media (min-width: $mediumish) {
+        width: 80px;
+        height: 120px;
+    }
+}

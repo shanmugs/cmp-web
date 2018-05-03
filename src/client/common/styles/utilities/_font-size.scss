@@ -1,0 +1,32 @@
+// Font Size Utility
+// ===
+
+// Global Variables
+// ---
+@import 'styles/variables';
+
+// Importants applied because our base typography specificty is bumped up to handle foundation
+// conflicts.  See ./src/styles/_base.scss for this specificity bump
+.u-fs {
+    font-size: $font-size !important;
+}
+
+.u-fs-sm {
+    @include font-size($small-font-sizes);
+}
+
+.u-fs-md {
+    @include font-size($medium-font-sizes);
+}
+
+.u-fs-lg {
+    @include font-size($large-font-sizes);
+}
+
+.u-fs-xl {
+    @include font-size($xlarge-font-sizes);
+}
+
+.u-fs-xxl {
+    @include font-size($xxlarge-font-sizes);
+}

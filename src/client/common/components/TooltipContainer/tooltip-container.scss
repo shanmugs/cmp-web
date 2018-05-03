@@ -1,0 +1,25 @@
+
+@import 'styles/_variables.scss';
+
+// Notes
+// [1] Encapsulates position of tooltip relative to trigger element
+
+.p-tooltip-container {
+    position: relative;
+    z-index: $orchestra-layer;
+}
+
+.p-tooltip-container__step {
+    position: relative; // [1]
+
+    // Beacon needs to sit above c-fireworks otherwise we can't
+    // click it
+    .c-fireworks {
+        z-index: $backdrop-layer;
+    }
+
+    .p-tooltip__beacon {
+        z-index: $stage-layer;
+        position: relative;
+    }
+}

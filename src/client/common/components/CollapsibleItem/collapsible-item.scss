@@ -1,0 +1,19 @@
+// CollapsibleItem Component
+// ===
+//
+
+// Root Component
+// ---
+
+.p-collapsible-item {
+}
+
+
+// Heading
+// ---
+
+.p-collapsible-item__heading {
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}

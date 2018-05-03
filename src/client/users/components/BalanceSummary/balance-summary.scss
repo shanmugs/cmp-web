@@ -1,0 +1,35 @@
+// User Balance Summary
+// ===
+//
+// A block displaying a summary of a user's account balance
+// Used in the header user account dropdown menu
+
+
+@import 'styles/_variables.scss';
+
+// Root Component
+// ---
+
+.c-user-balance-summary {
+    padding: $xlarge-unit;
+
+    background-color: $brand-color;
+    background-image: url('../../images/Pattern_Account2x.png');
+    background-size: 78px 50px;
+
+    color: $neutral-30;
+}
+
+.c-user-balance-summary__description {
+    font-size: $small-font-size;
+}
+
+
+// Company Accounts Modifier
+// ---
+
+.c-user-balance-summary.c--company {
+    background-color: $secondary-brand-color-dark;
+    background-image: url('../../images/Pattern_Company2x.png');
+    background-size: 137px 137px;
+}

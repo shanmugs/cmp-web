@@ -1,0 +1,25 @@
+// Overlay
+// ===
+//
+// A full page overlay that is used behind modals and other such things.
+
+@import 'styles/_variables.scss';
+
+// Root Component
+// ---
+.c-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $stage-layer;
+
+    background-color: rgba($neutral-70, 0.75);
+}
+
+// Lighter Overlay
+// ---
+.c-overlay.c--light {
+    background-color: rgba($neutral-30, 0.75);
+}

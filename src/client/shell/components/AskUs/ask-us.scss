@@ -1,0 +1,50 @@
+
+// Ask Us
+// ===
+//
+
+@import 'styles/_variables.scss';
+
+// Root Component
+// ===
+
+.c-ask-us {
+
+}
+
+
+// Section Heading
+// ---
+
+.c-ask-us__heading.c-ask-us__heading {
+    @include font-size($medium-font-size);
+
+    // Bah. Extra specificity.
+    margin-bottom: $unit;
+
+    font-weight: normal;
+}
+
+
+// Button Wrapper
+// ---
+
+.c-ask-us__button-wrapper {
+    flex: 0 0 7em; // Set buttons to be equal width, wide enough for french too
+
+    > .c-button {
+        width: 100%;
+    }
+}
+
+// French Styles
+.fr .c-ask-us__button-wrapper {
+    flex-basis: 9em;
+}
+
+
+// Description
+// ---
+.c-ask-us__description {
+    font-size: $small-font-size;
+}

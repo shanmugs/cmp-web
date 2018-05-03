@@ -1,0 +1,70 @@
+// Authenticated Header Account Nav Trigger and Dropdown
+// ===
+
+@import 'styles/variables';
+
+// [1] Shifts the dropdown down contents further down to accomodate for the larger dropdown trigger
+.c-header-account-dropdown {
+    padding: 0 0 0 $unit;
+    // shifts the arrow above the content to the left to line up with the avatar
+    &::after,
+    &::before {
+        // Not using $unit because it's reliant on the width of the dropdown
+        left: -0.5em;
+    }
+    &::before {
+        bottom: -1.275em; // [1]
+    }
+    &:after {
+        bottom: -1.125em; // [1]
+    }
+}
+
+.c-header-account-dropdown__trigger {
+    // Remove base button styles
+    padding: 0;
+    border: none;
+
+    background-color: transparent;
+
+    &:active,
+    &:focus,
+    &:hover {
+        outline: none;
+    }
+}
+
+.c-header-account-dropdown__trigger-avatar {
+    // Enforcing Avatar as a square to preserve header Height
+    width: 3em;
+    height: 3em;
+
+    display: inline-flex;
+    align-items: center;
+
+    justify-content: center;
+    vertical-align: middle;
+
+    border: 1px solid;
+    border-color: $neutral-50;
+
+    border-radius: 50px;
+    .no-flexboxlegacy & {
+        display: inline-block;
+    }
+}
+
+.c-header-account-dropdown__trigger-carat {
+    margin-left: $small-unit;
+
+    .no-flexboxlegacy & {
+        display: inline-block;
+    }
+}
+
+.c-header-account-dropdown__content {
+    // clips BG colours of child divs according to the same border radius as the dropdwon content
+    overflow: hidden;
+    margin-top: 1.05em; // [1]
+    padding-top: $xlarge-unit;
+}

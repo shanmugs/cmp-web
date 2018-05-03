@@ -1,0 +1,11 @@
+.ui.header {
+    text-transform: capitalize;
+}
+
+h1.ui.header {
+    font-weight: 400;
+}
+
+h3.ui.header {
+    color: @h3textColor;
+}

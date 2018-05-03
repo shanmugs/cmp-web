@@ -1,0 +1,67 @@
+// CalloutAvatar
+// ===
+//
+// Displays a callout bubble with configurable content and an avatar below
+
+@import 'styles/_variables.scss';
+@import 'styles/mixins/triangle.scss';
+
+// Root Component
+// ---
+
+.c-callout-avatar {
+}
+
+
+// Animate Up modifier
+// ---
+.c-callout-avatar.c--animate {
+    animation: animate-up 0.2s ease-out;
+}
+
+
+// Content Bubble
+// ---
+// Notes:
+// [1] Centers triangle
+.c-callout-avatar__content {
+    position: relative; // For absolutely positioned triangle
+
+    margin-bottom: $unit;
+    padding: $xlarge-unit;
+
+    background-color: $neutral-40;
+    border-radius: 8px; // Custom border radius for this component
+
+    font-weight: $font-weight-medium;
+    text-align: center;
+
+    &::after {
+        @include triangle($type: 'triangle', $direction: 'down', $size:$unit, $color: $neutral-40);
+
+        content: '';
+
+        position: absolute; // [1]
+        right: 0; // [1]
+        bottom: -$unit*00000.9; // should be little bit less than height of triangle
+        left: 0; // [1]
+
+        margin: auto; // [1]
+    }
+}
+
+// Avatar
+// ---
+.c-callout-avatar__avatar {
+    position: relative;
+    top: $xlarge-unit;
+
+    display: block; // To center with margin auto
+    width: 5em; // Set avatar size
+    height: 5em; // Set avatar size
+    margin: 0 auto;
+    border: 2px solid $border-color;
+
+    background-color: $neutral-30;
+    border-radius: 50%;
+}

@@ -1,0 +1,44 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.5.0-browsers
+        environment:
+          CHROME_BIN: "/usr/bin/google-chrome"
+
+    working_directory: ~/chimp-web-client
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      # Add required OS packages
+      - run: sudo npm install --global yarn@1.5.1
+
+      # Install all dependencies including unforuately devDependencies because
+      # we need clap to run tests
+      - run:
+          name: install-yarn
+          command: yarn install --production=false
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # run tests!
+      - run:
+          name: test
+          command: yarn test
+

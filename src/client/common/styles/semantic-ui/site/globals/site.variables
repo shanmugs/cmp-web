@@ -1,0 +1,14 @@
+
+// Brand
+//
+@primaryColor: @red;
+@secondaryColor: @violet;
+
+// Colours
+//
+@black: #262729;
+@orange: #f48c26;
+@red: #ff4511;
+@purple: #2f166e;
+@violet: #9966ff;
+@yellow: #fce500;

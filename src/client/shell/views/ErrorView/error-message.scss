@@ -1,0 +1,44 @@
+// ErrorMessage
+// ===
+//
+// Displays user friendly error message
+
+@import 'styles/_variables.scss';
+
+// Library of mixins for common styling
+// @import '/bower_components/spline/dist/_spline.scss';
+
+// Root Component
+// ---
+.c-error-message {
+    display: flex;
+
+    min-height: 100vh;
+}
+
+.c-error-message__wrapper {
+    position: relative; // for absolutely positioned image
+
+    margin-top: 11em;
+
+    background-color: $neutral-40;
+
+    flex-grow: 1;
+}
+
+.c-error-message__img {
+    position: absolute;
+    top: -6em;
+    right: 0;
+    left: 0;
+
+    width: 146px;
+    height: 143px;
+    margin: 0 auto;
+}
+
+.c-error-message__content {
+    padding: 5em $unit $unit;
+
+    text-align: center;
+}

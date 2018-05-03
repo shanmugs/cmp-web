@@ -1,0 +1,67 @@
+// Carousel
+// ===
+//
+// Carousel Abstraction that wraps slick slider
+
+@import 'styles/_variables.scss';
+
+$slick-dot-color: $neutral-40;
+$slick-dot-color-active: $secondary-brand-color;
+$slick-dot-size: 0.5em;
+
+// Root Component
+// ---
+.c-carousel {
+    margin-bottom: $xlarge-unit;
+    border-bottom: $border;
+}
+
+
+// Fixing issue with overlapping 1px in slick-carousel
+// only on Safari browser
+// more details in this thread: https://github.com/kenwheeler/slick/issues/1868
+.safari  .slick-slide {
+    position: relative;
+    left: -1px !important;
+}
+
+
+.c-carousel__slide {
+    @media (min-width: $smallmediumish) {
+        padding: 0 $xlarge-unit;
+    }
+}
+
+.carousel__dots-wrapper {
+    margin-bottom: $xlarge-unit;
+
+    text-align: center;
+
+    li {
+        display: inline-block;
+    }
+
+    button { // Slick doesn't allow us to customize the button markup
+        display: block;
+        width: $slick-dot-size;
+        height: $slick-dot-size;
+        margin: 0 $unit;
+        padding: 0;
+        border: none;
+
+        background-color: $slick-dot-color;
+        border-radius: $slick-dot-size/2;
+
+        color: transparent;
+        line-height: 0; // centers the dots in their div
+
+        &:hover,
+        &:focus {
+            outline: none; // Prevents focus halo
+        }
+    }
+
+    .slick-active button {
+        background-color: $slick-dot-color-active;
+    }
+}

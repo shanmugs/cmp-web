@@ -1,0 +1,54 @@
+// This class gets applied to the html tag on legacy pages
+//
+// These styles are meant to override styles that are leaking in to the React
+// Components from the old legacy pages
+
+// Common styles each component needs to not conflict with the existing legacy styles.
+// I only put this into a mixin to reduce our repeated code and so we can scope the overrides to our components.
+// Some of the overides were bleeding into the legacy styles
+@mixin legacy-base() {
+
+    a {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        text-decoration: none;
+        text-shadow: none;
+    }
+    ul {
+        display: block;
+    }
+    p {
+        color: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+    }
+}
+
+.legacy-compatibility {
+    .bonobo {
+        // Set base font size on bonobo components in legacy environments
+        font-size: 16px;
+    }
+
+    .c-header {
+        @include legacy-base();
+
+        -webkit-font-smoothing: initial;
+
+        z-index: 10; // CT-1715 header dropdowns should show on top of tour tooltips
+    }
+    .c-button {
+        box-shadow: none;
+    }
+    // On legacy pages the header width should match the content width which is
+    // slightly narrower
+    .c-inner-wrapper {
+        max-width: 1125px;
+    }
+    .c-header-modal {
+        @include legacy-base();
+
+        z-index: 1000; // using 1000 to sit on top of the legacy .header-wrapper
+    }
+}

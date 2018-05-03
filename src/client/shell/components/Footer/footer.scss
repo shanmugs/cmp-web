@@ -1,0 +1,20 @@
+// Footer Component
+// ===
+//
+
+@import 'styles/_variables.scss';
+
+
+// Root Styles
+// ---
+
+.c-footer {
+    background-color: $secondary-brand-color-dark;
+}
+
+// Modifier for when the footer in a mobile view has a preceding element
+// overlapping it. See CT-3108
+
+.c-footer.c--overlap {
+    padding-top: $large-unit;
+}

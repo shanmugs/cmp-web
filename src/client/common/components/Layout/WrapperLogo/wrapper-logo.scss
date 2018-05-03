@@ -1,0 +1,31 @@
+// WrapperLogo
+// ===
+//
+// Styling wrapper component with offset Chimp Logo
+
+@import 'styles/_variables.scss';
+
+
+// Root Component
+// ---
+.c-wrapper-logo {
+    margin-bottom: $unit*4;
+    padding-top: $large-unit; // compensate for the logo position
+}
+
+.c-wrapper-logo__inner {
+    padding: 0 $large-unit $unit*3;
+
+    background-color: $brand-color-tint;
+}
+
+.c-wrapper-logo__logo {
+    position: relative;
+    top: -$large-unit;
+
+    display: block;
+    margin: 0 auto $large-unit;
+
+    color: $brand-color;
+    fill: currentColor;
+}

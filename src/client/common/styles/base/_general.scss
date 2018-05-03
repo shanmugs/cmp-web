@@ -1,0 +1,43 @@
+// General
+// ===
+
+// Document
+// ---
+//
+// 1. Applying styles to *::before or *::after is a performance issue on some
+//    legacy Android devices (4.1.x). As such, these are disabled by default.
+
+// *::before, // 1
+// *::after, // 1
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    &,
+    body {
+        display: block;
+        height: 100%; // Sticky Footer CT-2181
+        width: 100%;
+    }
+
+    color: $font-color;
+    font-family: $font-family;
+    line-height: $line-height;
+
+    @media (min-width: $largeish) {
+        font-size: 112.5%; // 18px base font
+    }
+}
+
+// Hidden
+// ---
+//
+// Hide visually and from screen readers. The html5 `hidden` attribute is
+// preferred to a `u-hidden` class because it exactly matches our intent and
+// has machine-readable semantics.
+
+[hidden] {
+    display: none !important;
+}

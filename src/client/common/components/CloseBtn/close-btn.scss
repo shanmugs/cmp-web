@@ -1,0 +1,35 @@
+// Close Button
+// ===
+//
+// A small close button
+
+@import 'styles/_variables.scss';
+@import 'styles/mixins/button.scss';
+
+
+// Root Component
+// ---
+
+.c-close-btn {
+    @include button;
+
+    width: 1.75em;
+    height: 1.75em;
+    padding: 0;
+    border: none;
+
+    background-color: $neutral-50;
+    border-radius: 50%;
+
+    .c-icon {
+        color: $link-color;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+        .c-icon {
+            color: $active-link-color;
+        }
+    }
+}

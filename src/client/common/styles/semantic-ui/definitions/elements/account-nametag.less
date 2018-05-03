@@ -1,0 +1,55 @@
+@type    : 'element';
+@element : 'list';
+
+@import (multiple) '../../theme.config';
+
+.ui.account-nametag {
+    display: inline;
+
+    &:not(:only-child) {
+        padding-right: @iconDistance;
+    }
+
+    .item > & {
+        display: table-cell;
+    }
+
+    > .account-nametag-name {
+        display: table-cell;
+        padding-left: @iconDistance;
+        vertical-align: middle;
+    }
+
+    > .account-nametag-name,
+    > i.icon {
+        &:only-child {
+            display: inline;
+        }
+
+        &:not(.bordered) {
+            display: inline-flex;
+            flex-direction: column;
+        }
+
+        &.bordered {
+            min-height: 2em;
+            min-width: 2em;
+        }
+    }
+
+    > i.icon.account-nametag-avatar {
+        display: table-cell;
+        padding-top: @iconOffset;
+        vertical-align: @iconContentVerticalAlign;
+        transition: @iconTransition;
+
+        &,
+        &:only-child {
+            margin: 0;
+        }
+
+        &:only-child {
+            vertical-align: @iconVerticalAlign;
+        }
+    }
+}

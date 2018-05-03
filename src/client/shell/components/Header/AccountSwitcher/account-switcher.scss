@@ -1,0 +1,36 @@
+// Header Account Nav Switcher contents
+// ===
+//
+
+@import 'styles/variables';
+
+// Root Component
+// ---
+
+.c-header-account-switcher {
+    > .c-account-preview.c--current {
+        margin-right: -$xlarge-unit;
+        margin-left: -$xlarge-unit;
+    }
+
+    .c-account-preview-list {
+        margin-right: -$xlarge-unit;
+        margin-left: -$xlarge-unit;
+        margin-bottom: -$xlarge-unit;
+
+        padding-bottom: $xlarge-unit;
+    }
+}
+
+
+// Header
+// ---
+.c-header-account-switcher__header {
+    margin-bottom: $xlarge-unit;
+    display: flex;
+    align-items: center;
+}
+
+.c-header-account-switcher__greeting {
+    flex: 1 0 auto;
+}

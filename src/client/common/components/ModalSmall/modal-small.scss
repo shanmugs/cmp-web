@@ -1,0 +1,67 @@
+// ModalSmall
+// ===
+//
+// A small modal
+
+@import 'styles/_variables.scss';
+@import 'styles/mixins/button.scss';
+
+// Mixins
+// ---
+@import 'styles/mixins/hide-text.scss';
+
+
+// Notes:
+// [1] Center vertically and horizontally, technique from
+// https://css-tricks.com/centering-in-the-unknown/
+
+// Root Component
+// ---
+.c-modal-small {
+    position: relative;
+    z-index: $orchestra-layer;
+
+    display: inline-block;
+    width: 20em; // Set fixed width. For now.
+    margin-top: $unit;
+
+    vertical-align: middle; //[1]
+}
+
+.c-modal-small__container {
+    height: 100%;
+    text-align: center; //[1]
+
+    &:before { //[1]
+        content: '';
+
+        display: inline-block;
+        height: 100%;
+        margin-right: 0;
+
+        vertical-align: middle;
+    }
+}
+
+
+// Close Button
+.c-modal-small__close {
+    @include button;
+
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+    z-index: $stage-layer;
+
+    width: 1.5em;
+    height: 1.5em;
+    padding: 0;
+    border: none;
+
+    background-color: $neutral-50;
+    border-radius: 50%;
+
+    .c-icon {
+        color: $secondary-brand-color-dark;
+    }
+}

@@ -1,0 +1,64 @@
+// Borders Utilites
+// ===
+
+// Global Variables
+// ---
+@import 'styles/variables';
+
+// Ref: https://github.com/tachyons-css/tachyons/blob/master/src/_borders.css
+
+// Base:
+//   b = border
+// Modifiers:
+//   a = all
+//   t = top
+//   r = right
+//   b = bottom
+//   l = left
+//   n = none
+
+.u-ba {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.u-bt {
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.u-br {
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+
+.u-bb {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.u-bl {
+    border-left-width: 1px;
+    border-left-style: solid;
+}
+
+.u-bn {
+    border-width: 0;
+    border-style: none;
+}
+
+
+// Border Colour modifiers
+// ---
+
+// .u--dark {
+//     border-color: $border-color;
+// }
+
+.u--med {
+    border-color: $border-color;
+}
+
+// .u--light {
+//     border-color: $border-color;
+// }

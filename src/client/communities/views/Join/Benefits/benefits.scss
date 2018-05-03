@@ -1,0 +1,18 @@
+// CommunityBenefits
+// ===
+//
+// Determines which incentives are displayed in Feature Cards on the Community Join and Invite pages
+
+@import 'styles/_variables.scss';
+
+
+// Root Component
+// ---
+
+.c-community-benefits {
+    margin-top: $xlarge-unit*2;
+
+    @media (min-width: $mediumish) {
+        margin-top: 0;
+    }
+}

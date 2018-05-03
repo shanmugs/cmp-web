@@ -1,0 +1,97 @@
+// WelcomeModal
+// ===
+//
+// Implementation of the Welcome Modal
+
+@import 'styles/_variables.scss';
+
+
+// Root Component
+// ---
+.c-welcome-modal {
+
+    .c-feature-card__content {
+        padding: $unit*2;
+
+        text-align: center;
+    }
+
+
+    .c-button {
+        display: block;
+        width: 100%;
+    }
+}
+
+// Carousel
+// ---
+// Notes:
+// [1] hack to make the slides equal height, necessary for [2]
+// [2] hack to bottom align all buttons
+// [3] Magic number single line button height makes a space for absolutley
+// positioned next slide buttons
+// [4] Image offset
+// [5] Set svg image size. Can be removed once svgs are rendered inline
+
+.c-welcome-modal__carousel {
+    background-color: $neutral-30;
+
+    .slick-track{ // [1]
+	    display: flex;
+    }
+
+	.slick-slide{ // [1]
+		display: flex;
+        height: auto;
+    }
+
+    .c-carousel__slide {
+        padding: 0;
+    }
+
+    .c-feature-card { // [2]
+        position: relative;
+
+        padding-bottom: 3em; // [3]
+    }
+
+    .c-feature-card__img-wrapper {
+        margin-bottom: $xlarge-unit; // [4]
+    }
+
+    .c-feature-card__img-wrapper {
+        background-color: #86CFC9;
+    }
+
+    [data-index="1"] .c-feature-card__img-wrapper {
+        background-color: $callout-color;
+    }
+
+    [data-index="2"] .c-feature-card__img-wrapper {
+        background-color: #F07B58;
+    }
+
+    .c-feature-card__img {
+        position: relative; // [4]
+        top: $xlarge-unit * 2; // [4]
+
+        width: 250px; // [5]
+        margin: 0 auto;
+    }
+
+    .c-feature-card__cta { // [2]
+        position: absolute;
+        left: $xlarge-unit;
+        bottom: $small-unit;
+
+        width: 17em;
+    }
+
+    .carousel__dots-wrapper {
+        margin-bottom: $small-unit;
+
+        button {
+            margin: 0 $small-unit;
+        }
+    }
+}

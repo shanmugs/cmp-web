@@ -1,0 +1,45 @@
+// This class gets applied to the body tag on Marketing pages
+//
+// These styles are meant to override styles that are leaking in to the React
+// Components from the Marketing Pages
+
+.marketing-compatibility .bonobo {
+    ul {
+        margin-left: 0;
+        font-size: $font-size;
+    }
+
+    [type='text'],
+    [type='search'],
+    [type='password'],
+    [type='tel'],
+    [type='url'],
+    [type='number'],
+    [type='email'] {
+        // Originaly used initial, but IE10 doesn't understand initial. Auto preforms the same function
+        width: auto;
+        height: auto;
+
+        font-size: $medium-font-size; // On smaller screens the font size should be < the 14px base size
+
+        @media (min-width: $mediumish) {
+            font-size: $font-size;
+        }
+    }
+
+    .c-accordion {
+        margin-top: 0;
+    }
+
+    // up specifcity to fix bug on Logged Out Header - Solutions - More Solutions links
+    .pure-g--gutters {
+        margin-left: -$unit;
+        margin-right: -$unit;
+    }
+}
+
+// CT-2161 Don't overwrite the marketing footer background color
+// Uses the same classname as App Footer: ;
+.marketing-compatibility .c-footer {
+    background-color: #edecec;
+}

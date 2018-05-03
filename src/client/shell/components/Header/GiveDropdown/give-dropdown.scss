@@ -1,0 +1,39 @@
+// Header Give Dropdown
+// ===
+//
+
+// Notes:
+// [1] Shifts the dropdown down further down to accomodate for the larger
+// dropdown trigger and match spacing on header-account-dropdown
+
+// [2] Since GiveCTA's have negative margins and they're wrapped by tooltip-container__step's
+// the positioning of tooltips and fireworks is off if the same negative margin isn't applied
+// to the step
+
+@import 'styles/variables';
+
+.c-header-give-dropdown {
+    &::before {
+        bottom: -1.275em; // [1]
+    }
+    &:after {
+        bottom: -1.125em; // [1]
+    }
+}
+
+.c-header-give-dropdown__content {
+    margin-top: 1.05em; // [1]
+    padding-bottom: 0;
+
+    .c-give-cta  {
+        margin-left: -$xlarge-unit;
+        margin-right: -$xlarge-unit;
+    }
+
+    .p-tooltip-container__step { // [2]
+        margin-left: -$xlarge-unit;
+        margin-right: -$xlarge-unit;
+        padding-left: $xlarge-unit;
+        padding-right: $xlarge-unit;
+    }
+}

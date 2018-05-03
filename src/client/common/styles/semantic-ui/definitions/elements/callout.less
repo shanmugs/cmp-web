@@ -1,0 +1,63 @@
+@type    : 'element';
+@element : 'header';
+
+@import (multiple) '../../theme.config';
+
+.callout {
+    flex-direction: column;
+
+    &.ui.segment.gemini {
+        // fight SUI's specificity
+        &:not(.inverted) {
+            border-top: none !important; // SUI's !important
+
+            .callout-heading {
+                color: @h3textColor;
+            }
+        }
+        &.inverted {
+            &.brand-primary {
+                background-color: @primaryColor;
+            }
+            &.brand-secondary {
+                background-color: @secondaryColor;
+            }
+
+            .callout-focus {
+                color: @purple;
+            }
+        }
+
+        .callout-heading {
+            font-size: @mediumFontSize;
+            margin: 0;
+        }
+    }
+
+    .callout-focus {
+        font-size: @largeFontSize;
+        line-height: @lineHeight;
+    }
+    &:not(.inverted) {
+        &.brand-primary {
+            .callout-focus {
+                color: @primaryColor;
+            }
+        }
+        &.brand-secondary {
+            .callout-focus {
+                color: @secondaryColor;
+            }
+        }
+        &.red {
+            .callout-focus {
+                color: @redTextColor;
+            }
+        }
+        &.green {
+            .callout-focus {
+                color: @greenTextColor;
+            }
+        }
+    }
+}

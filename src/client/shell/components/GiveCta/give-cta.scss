@@ -1,0 +1,91 @@
+// Give CTA
+// ===
+//
+// A CTA allowing users to give, add money to their account, or send money to a
+// friend
+
+@import 'styles/_variables.scss';
+
+// Root Component (Send Money)
+// ---
+//
+
+.c-give-cta {
+    display: flex;
+    padding: $xlarge-unit $large-unit;
+
+    background-color: $brand-color;
+    background-image: url('../../images/Pattern_Account2x.png');
+    background-size: 78px 50px;
+
+    color: white;
+}
+
+.c-give-cta__description {
+    flex: 1 1 auto;
+    margin-right: $large-unit;
+}
+
+.c-give-cta__action {
+    flex: 0 0 auto;
+}
+
+.c-give-cta__expand-text {
+    &.c-give-cta__expand-text {
+        margin-bottom: 0; // Prevents a 'jump' when the collapse content opens
+        padding-top: $unit;
+
+        font-size: $font-size; // extra specificity
+    }
+
+    + .c-button {
+        margin-top: $large-unit;
+    }
+}
+
+.c-give-cta__heading {
+    &.c-give-cta__heading {
+        // extra specificity
+        margin-bottom: $unit;
+    }
+}
+
+.c-give-cta__expand-heading {
+    font-size: $small-font-size;
+}
+
+.c-give-cta__expand {
+    .c-icon {
+        font-size: $small-font-size;
+    }
+
+    &.c--open {
+        .c-icon {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.c-give-cta__expand-icon {
+    margin-right: $small-unit;
+}
+
+// Give Alternative
+// ---
+//
+
+.c-give-cta.c--give {
+    background-color: $tertiary-brand-color;
+    background-image: url('../../images/Pattern_Charity2x.png');
+    background-size: 115px 115px;
+}
+
+// Send Alternative
+// ---
+//
+
+.c-give-cta.c--send {
+    background-color: $secondary-brand-color;
+    background-image: url('../../images/Pattern_Friend2x.png');
+    background-size: 274px 202px;
+}

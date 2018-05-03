@@ -1,0 +1,50 @@
+{
+	"name": "CHIMP Web App",
+	"description": "CHIMP Web App",
+    "addons": [
+        "logdna"
+    ],
+	"buildpacks": [
+		{
+			"url": "heroku/nodejs"
+		},
+        {
+            "url": "https://github.com/KazW/nginx-buildpack"
+        },
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-cli"
+        }
+	],
+	"env": {
+        "API_BASE_PATH": { "required": true },
+        "APP_HOSTNAME": { "value": "check-heroku-post-deploy-script.herokuapp.com" },
+        "APP_PROXY_URL": { "value": "http://check-heroku-post-deploy-script.herokuapp.com" },
+        "APP_URL_ORIGIN": { "value": "http://check-heroku-post-deploy-script.herokuapp.com" },
+        "ASSETS_URL_ORIGIN": { "value": "http://check-heroku-post-deploy-script.herokuapp.com" },
+        "BLOG_PROXY_URL": { "required": true },
+        "CHIMP_API_URL_ORIGIN": { "required": true },
+        "DEFAULT_LOCALE": { "required": true },
+        "FB_PIXEL_ID": { "required": true },
+        "GIVING-IN-CANADA_PROXY_URL": { "required": true },
+        "HEROKU_API_TOKEN": { "required": true },
+        "HEROKU_APP_NAME":  { "required": true },
+        "LOGDNA_KEY": { "required": true },
+        "LOG_LEVEL": { "required": true },
+        "NEW_RELIC_LICENSE_KEY": { "required": true },
+        "NEW_RELIC_LOG": { "required": true },
+        "NPM_CONFIG_PRODUCTION": { "required": true },
+        "RAILS_APP_PROXY_URL": { "required": true },
+        "RAILS_APP_URL_ORIGIN": { "required": true },
+        "NODE_ENV": { "required": true },
+        "STATIC_ASSETS_URL_ORIGIN": { "required": true },
+        "STATIC_FILES_OFF": { "required": true },
+        "STRATEGIES_PROXY_URL": { "required": true },
+        "USE_NGINX": { "required": true },
+        "YARN_PRODUCTION": { "required": true }
+	},
+    "scripts": {
+        "postdeploy": [
+            "node lib/tasks/configure-heroku-review-app.js ${HEROKU_APP_NAME}"
+        ]
+    }
+}

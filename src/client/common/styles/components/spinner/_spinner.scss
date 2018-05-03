@@ -1,0 +1,44 @@
+// Global Spinner Component
+// ===
+//
+
+// A CSS spinner that can be applied to a parent container element
+$spinner__size: 1.5em;
+
+
+.c-spinner {
+    position: relative;
+
+    &::after {
+        content: '';
+
+        position: absolute;
+        top: calc(50% - #{$spinner--size / 2});
+        left: calc(50% - #{$spinner--size / 2});
+
+        transform: translate(-(50% - #{$spinner--size / 2}), -(50% - #{$spinner--size / 2}));
+
+        display: block;
+        width: $spinner--size;
+        height: $spinner--size;
+        border: solid 0.4em $brand-color;
+        border-left-color: transparent;
+
+        border-radius: 50%;
+
+        animation: spinner__rotation 0.9s linear infinite;
+    }
+}
+
+
+// Spinner Animation
+// ---
+
+@keyframes spinner__rotation {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}

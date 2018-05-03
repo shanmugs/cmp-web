@@ -1,0 +1,20 @@
+// Font Weight Utility
+// ===
+//
+// Ref: https://github.com/tachyons-css/tachyons-font-weight/blob/master/css/tachyons-font-weight.scss
+
+// Global Variables
+// ---
+@import 'styles/variables';
+
+.u-fw {
+    font-weight: normal;
+}
+
+.u-fw-m {
+    font-weight: $font-weight-medium;
+}
+
+.u-fw-b {
+    font-weight: $font-weight-demibold;
+}

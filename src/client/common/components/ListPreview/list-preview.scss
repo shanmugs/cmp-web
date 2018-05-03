@@ -1,0 +1,84 @@
+// List Preview Component
+// ===
+//
+// Used to display the first few items of a list, then a link to the full list
+// Can optionally include a heading
+
+
+// Dependencies
+// ---
+@import 'styles/_variables.scss';
+@import 'styles/mixins/clearfix.scss';
+
+
+// Root component
+// ---
+
+.c-list-preview {
+    .c-button {
+        display: block;
+
+        @media (min-width: $mediumish) {
+            display: inline-block;
+        }
+    }
+}
+
+// Optional Heading
+// ---
+
+.c-list-preview__heading {
+
+}
+
+// List
+// --
+
+.c-list-preview__list {
+    margin-bottom: $xlarge-unit;
+
+    @media (min-width: $mediumish) {
+        margin-bottom: $unit;
+    }
+}
+
+// Wrapper for Mobile styles
+.c-list-preview__list-item-wrapper {
+
+}
+
+.c-list-preview__list-item {
+    display: flex;
+    align-items: center;
+
+    .no-flexboxlegacy & {
+        @include clearfix;
+
+        display: block;
+    }
+}
+
+.c-list-preview__list-item-name {
+    flex: 1 1 auto;
+
+    .no-flexboxlegacy & {
+        display: inline-block;
+        max-width: 90%;
+    }
+}
+
+// Icon before the list item
+.c-list-preview__list-item-icon {
+    .no-flexboxlegacy & {
+        display: inline-block;
+    }
+}
+
+// Icon after the list item
+.c-list-preview__list-item-icon-end {
+    flex: 0 0 auto;
+    .no-flexboxlegacy & {
+        float: right;
+        margin-top: $large-unit;
+    }
+}

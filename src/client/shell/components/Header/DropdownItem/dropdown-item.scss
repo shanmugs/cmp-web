@@ -1,0 +1,142 @@
+// Header Dropdown Item
+// ===
+//
+
+// Dependencies
+// ---
+
+@import 'styles/variables';
+@import 'styles/mixins/triangle';
+
+$border-radius: 5px; // Custom border radius for this component
+
+
+// Root Component
+// ---
+
+.c-header-dropdown-item {
+    // Dropdown Menu Triangle
+    // ---
+    // Notes:
+    // [1] Center the triangles
+
+    &::before,
+    &::after {
+        content: '';
+
+        position: absolute; // [1]
+        margin: auto; // [1]
+        left: 0; // [1]
+        right: 0; // [1]
+
+        display: none;
+    }
+
+    // Grey Triangle creates the border around the White Triangle
+    // ---
+
+    &::before {
+        @include triangle($type: 'triangle', $direction: 'up', $size: 0.85em*1.3, $color: darken($neutral-40, 5%));
+
+        bottom: -$unit*1.4;
+    }
+
+    // White Triangle
+    // ---
+
+    &::after {
+        @include triangle($type: 'triangle', $direction: 'up', $size: 0.85em, $color: $neutral-30);
+
+        bottom: -$unit*1.2;
+    }
+}
+
+
+// Open State
+// ---
+
+.c-header-dropdown-item.p--open {
+
+    // Dropdown Menu Triangle
+    // ---
+
+    &::before,
+    &::after {
+        display: block;
+
+        animation: animate-triangle-up 0.2s ease-out;
+    }
+}
+
+
+// Custom Keyframe for the triangles
+// ---
+
+@keyframes animate-triangle-up {
+    0% {
+        display: none;
+
+        opacity: 0;
+
+        transform: translateY($unit);
+    }
+    1% {
+        display: block;
+
+        opacity: 1;
+
+        transform: translateY($unit);
+    }
+    100% {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+// Dropdown Content Container
+// ---
+
+.c-header-dropdown-item__contents {
+    margin-top: $unit;
+    padding: $xlarge-unit $xlarge-unit $large-unit;
+    border-top: 1px solid darken($neutral-40, 5%);
+
+    background-color: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-25;
+
+    color: $font-color;
+
+    transition: $transition;
+
+    &.p--open {
+        transform: translateY(0);
+        animation: animate-up 0.2s ease-out;
+    }
+}
+
+
+// Dropdown Content Heading
+// ---
+
+.c-header-dropdown-item__contents-heading {
+    margin-bottom: $xsmall-unit;
+
+    font-weight: $font-weight-demibold;
+    line-height: 1;
+
+    // Custom font size that doesn't follow the type scale
+    + p {
+        font-size: 0.889em;
+    }
+}
+
+
+// Dropdown Content Links
+// ---
+
+.c-header-dropdown-item__contents-link {
+    margin-bottom: $xsmall-unit;
+}

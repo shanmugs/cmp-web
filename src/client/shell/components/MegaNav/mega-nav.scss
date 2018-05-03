@@ -1,0 +1,30 @@
+@import 'styles/_variables.scss';
+
+// Header Mega Nav
+// ===
+//
+
+.c-mega-nav {
+    flex: 1 0 auto;
+    margin-left: $xlarge-unit;
+
+    .c-link-list__item {
+        margin-bottom: $small-unit;
+    }
+}
+
+.c-mega-nav__heading.c-mega-nav__heading { // Bah. Extra specificity.
+    margin-bottom: $unit;
+
+    // CT-1525 This font size accomodates longer titles in ipad portrait
+    font-size: $medium-font-size;
+    font-weight: normal;
+
+    @media (min-width: $largeish) {
+        font-size: $large-font-size;
+    }
+}
+
+.c-mega-nav__list-heading.c-mega-nav__list-heading {
+    margin-bottom: $unit;
+}

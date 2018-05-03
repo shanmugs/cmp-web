@@ -1,0 +1,21 @@
+// Style that are common in giving flows
+
+@import 'styles/_variables.scss';
+
+.breadcrumb-non-active {
+    color: grey;
+}
+
+.label {
+    color: #474545;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.achPointer {
+    cursor: pointer! important;
+}
+
+.achPading {
+    padding-left: 5px;
+}

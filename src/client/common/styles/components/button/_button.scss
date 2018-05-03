@@ -1,0 +1,233 @@
+// Button root
+// ===
+
+// Dependencies
+// ---
+@import 'styles/variables';
+@import '../../mixins/button';
+
+
+// Button
+//
+// Basic Button
+//
+// .c--light - An inverse of Basic Button for dark backgrounds
+// .c--light-inverted - Filled Button, inverted for use on dark backgrounds
+// .c--filled - Filled Button
+// .c--pop - Button with a Pop on hover or active state
+// .c--pop.c--light - Light Button with a Pop
+// .c--pop.c--light-inverted - Filled Button, inverted, with a Pop
+// .c--pop.c--filled - Filled Button with a Pop
+// .c--small - small modifier that can be applied to all button modifiers
+//
+// Markup:
+//     <button type="button" class="c-button {{modifier_class}}">
+//         Some Content
+//     </button>
+//
+// Style guide: components.button
+
+// Global Button Styles
+// ---
+
+.c-button {
+    @include button;
+
+    padding: $unit;
+    border: 1px solid;
+
+    border-color: rgba($link-color, 0.85);
+
+    @media (min-width: $mediumish) {
+        padding: $input-padding;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+        border-color: $link-color;
+
+        background-color: mix(white, $link-color, 15%);
+    }
+
+    // increase specificity of attributes that may otherwise be overridden by
+    // base styles on a legacy page ex. anchor styles
+
+    &.c-button {
+        color: $link-color;
+
+        &:active,
+        &:focus,
+        &:hover {
+            color: $neutral-30;
+        }
+    }
+}
+
+
+// Button Colors
+// ---
+
+.c-button.c--light {
+    color: $neutral-30;
+    border-color: $neutral-30;
+
+    &:active,
+    &:focus,
+    &:hover {
+        color: $link-color;
+        border-color: $neutral-30;
+        background-color: $neutral-30;
+    }
+}
+
+.c-button.c--light-inverted {
+    color: $link-color;
+    border-color: $neutral-30;
+    background-color: $neutral-30;
+
+    &:active,
+    &:focus,
+    &:hover {
+        color: $link-color;
+    }
+}
+
+
+// Danger Button
+// ---
+// For destructive actions
+
+.c-button.c--danger {
+    color: $error-color;
+    border-color: $error-color;
+
+    &:active,
+    &:focus,
+    &:hover {
+        color: $neutral-30;
+        background-color: $error-color;
+    }
+}
+
+
+// Serious Danger Button
+// ---
+// For serious destructive actions
+
+.c-button.c--serious-danger {
+    color: $neutral-30;
+    border-color: $error-color;
+    background-color: $error-color;
+
+    &:active,
+    &:focus,
+    &:hover {
+        border-color: mix(white, $error-color, 15%);
+        background-color: mix(white, $error-color, 15%);
+    }
+}
+
+
+// Large Button
+// --
+
+.c-button.c--lg {
+    padding: $large-unit $xlarge-unit * 2;
+}
+
+
+// Filled Buttons
+// ---
+
+.c-button.c--filled {
+    color: $neutral-30;
+    border-color: $link-color;
+    background-color: $link-color;
+
+    &:active,
+    &:focus,
+    &:hover {
+        color: $neutral-30;
+        border-color: mix(white, $link-color, 15%);
+        background-color: mix(white, $link-color, 15%);
+    }
+}
+
+
+// Popping Buttons (hover effect)
+// ---
+
+.c-button.c--pop {
+    &:hover,
+    &:active {
+        box-shadow: 0 5px 0 0 mix(black, $link-color, 10%);
+    }
+
+    &:hover,
+    &:focus {
+        transform: translateY(-5px);
+    }
+
+    &:active {
+        transform: translateY(-2px);
+    }
+}
+
+// Base styles affect the pop box shadow color in infinite ways 🌈
+.c-button.c--pop {
+    &.c--light {
+        &:active,
+        &:focus,
+        &:hover {
+            box-shadow: 0 5px 0 0 mix(white, $link-color, 75%);
+        }
+    }
+
+    &.c--filled {
+        &:active,
+        &:focus,
+        &:hover {
+            box-shadow: 0 5px 0 0 mix(black, $link-color, 10%);
+        }
+    }
+
+    &.c--light-inverted {
+        &:active,
+        &:focus,
+        &:hover {
+            box-shadow: 0 5px 0 0 mix(white, $link-color, 75%);
+        }
+    }
+}
+
+// Icon Button
+//
+// A button with an icon as content
+//
+// Markup:
+//     <button type="button" class="c-button c--icon">
+//         <span class="u-visually-hidden">Menu</span>
+//         <svg class="c-icon"><title>menu</title><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu_7f2e2b9b7608ce001f191b38038b961a"></use></svg>
+//     </button>
+//
+// Style guide: components.button
+
+
+// Icon Button
+// ---
+//
+// A button with icon as content
+
+.c-button.c--icon {
+    @media (min-width: $mediumish) {
+        padding: $unit;
+    }
+}
+
+
+// Button Sizes
+// ---
+.c-button.c--small.c--small { // specificity conflicts with .legacy-compatibility .c-header a
+    font-size: $small-font-size;
+}

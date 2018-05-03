@@ -1,0 +1,39 @@
+// ChimpFeatures
+// ===
+//
+// Responsively displays features and benefits of Chimp. Used on Community join and P2P invite landing pages.
+
+@import 'styles/_variables.scss';
+
+
+// Root Component
+// ---
+.c-chimp-features {
+
+}
+
+.c-chimp-features__wrapper {
+    display: flex;
+
+    margin-bottom: $xlarge-unit;
+    padding-right: $unit;
+    padding-left: $unit;
+
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (min-width: $smallmediumish) {
+        flex-wrap: nowrap;
+    }
+
+    .c-feature-card {
+        margin-right: $small-unit;
+        margin-left: $small-unit;
+
+        flex: 0 0 46%;
+
+        @media (min-width: $smallmediumish) {
+            flex: 0 0 9.5em;
+        }
+    }
+}

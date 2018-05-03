@@ -1,0 +1,146 @@
+// Tooltip
+// ===
+//
+
+@import 'styles/_variables.scss';
+
+// Mixins
+// ---
+@import 'styles/mixins/triangle.scss';
+
+$border-width: 2px;
+
+// Root Component
+// ---
+
+// Notes:
+// [1] Handles position
+// [2] Spacing between target element
+
+.c-tooltip {
+    position: absolute;
+    top: -$xlarge-unit; // [2]
+    left: 50%; // [1]
+
+    width: 18em;
+    padding: $xlarge-unit $large-unit;
+
+    border-radius: $border-radius;
+
+    color: $neutral-30;
+
+    transform: translate(-50%, -100%); // [1]
+
+    .c-close-btn {
+        position: absolute;
+        top: 0; // [1]
+        right: 0; // [1]
+
+        transform: translate(50%,-50%); // [1]
+    }
+}
+
+// Common background colour and border style for container and arrow elements
+.c-tooltip,
+.c-tooltip__arrow::after {
+    border: $border-width solid $secondary-brand-color-dark;
+
+    background-color: $secondary-brand-color-dark;
+}
+
+
+// Tooltip arrow
+// ---
+// Notes
+// [1] Arrow size
+
+.c-tooltip__arrow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    overflow: hidden;
+    width: 2em; // [1]
+    height: 2em; // [1]
+
+    transform: translate(-50%, 100%);
+
+    &::after {
+        content: '';
+
+        position: absolute;
+
+        display: block;
+        width: 75%;
+        height: 75%;
+        margin: calc(-50% - #{$border-width}) 0 0 0; // 50% - border width
+
+        transform: rotate(45deg);
+    }
+}
+
+
+// Tooltip Icon
+// ---
+
+.c-tooltip__icon {
+    display: flex;
+    margin-bottom: $unit;
+
+    color: $secondary-brand-color-light;
+}
+
+
+// Modifiers
+// ---
+
+// Tooltip below
+// ---
+
+.c-tooltip.c--below {
+    top: auto;
+    bottom: -$xlarge-unit; // [2]
+
+    transform: translate(-50%, 100%); // [1]
+
+    .c-tooltip__arrow {
+        top: 0;
+        bottom: auto;
+
+        transform: translate(-50%, -100%);
+
+        &::after {
+            top: auto;
+            bottom: calc(-50% - #{$border-width}); // 50% - border width
+
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+
+// Tooltip to the left
+// ---
+
+.c-tooltip.c--left {
+    top: 50%;
+    left: -$xlarge-unit; // [2]
+
+    transform: translate(-100%, -50%); // [1]
+
+    .c-tooltip__arrow {
+        right: 0;
+        bottom: calc(50% - #{$border-width});
+        left: auto;
+
+        transform: translate(100%, 50%);
+
+        &::after {
+            top: auto;
+            right: calc(50% + #{$border-width} * 2);
+            bottom: calc(-50% - #{$border-width});
+
+            transform: rotate(45deg) translate(-50%, -50%);
+        }
+    }
+}

@@ -1,0 +1,214 @@
+// Variables
+// ===
+//
+// - Names should be lowercase and dash-separated;
+// - Qualifiers should be added to the beginning of related variables: use
+//   `$small-font-size`, not `$font-size-small`;
+// - Numeric scales should use increments of 10; these numbers are arbitrary and
+//   should not map to actual values. If really necessary, additional values can
+//   be added in between, e.g. $neutral-15 between 10 and 20.
+
+@import 'styles/mixins/font-sizes.scss';
+
+
+// Layout
+// ---
+
+$unit: 0.75em; // Basic unit for spacing and alignment. 12px based on 16px base font size.
+$tap-size: 45px; // Standard tap-target size.
+$wrapper-max: 1280px; // General wrapper max width
+$wrapper-small: 430px; // Smaller wrapper size
+
+
+// Breakpoints
+// ---
+
+// CT-2593 CT-2645 Use EM breakpoints because fontsize change in
+// _general.scss one medium can cause an infinite repaint on iPhone 6 plus
+// landscape due to an iOS safari bug on how it handles REM breakpoints
+
+// $smallish: 23em; // ~ 375px
+$smallmediumish: 35em; // ~560px
+$mediumish: 48em; // ~768px
+$largeish: 64em; // 1024px
+
+
+// Spacing
+// ---
+
+$xsmall-unit: $unit/4;
+$small-unit: $unit/2;
+$large-unit: $unit*1.5;
+$xlarge-unit: $unit*2;
+
+
+// Typography
+// ---
+
+$font-family: 'Avenir Next', 'Avenir Next W01', Avenir, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$font-size: 1em;
+
+$small-font-sizes: (
+  null: 0.8em,
+  $mediumish: 0.75em
+);
+
+$medium-font-sizes: (
+  null: 1.25em,
+  $mediumish: 1.33em
+);
+
+$large-font-sizes: (
+  null: 1.563em,
+  $mediumish: 1.77em
+);
+
+$xlarge-font-sizes: (
+  null: 1.953em,
+  $mediumish: 2.36em
+);
+
+$xxlarge-font-sizes: (
+  null: 2.441em,
+  $mediumish: 3.157em
+);
+
+// Type Scale based on Perfect Fourth
+$small-font-size: 0.75em; // 12px
+$medium-font-size: 1.33em; // 21px (desktop) - 18px (mobile)
+$large-font-size: 1.77em; // 28px
+$xlarge-font-size: 2.369em;
+$xxlarge-font-size: 3.157em;
+
+$line-height-small: 1.3;
+$line-height: 1.385;
+$line-height-title: 1.35;
+$xlarge-line-height: 2;
+
+$font-weight-medium: 500;
+$font-weight-demibold: 600;
+
+// Base Icon Size
+// ---
+$icon__size: 1.2857em;
+
+
+// Color palette
+// ---
+
+$neutral-30: #ffffff;
+$neutral-35: #f2f2f2;
+$neutral-40: #eae8e8;
+$neutral-50: #d8d8d8;
+$neutral-60: #9a9b9c;
+$neutral-70: #717273;
+
+// Brand colors
+$brand-color: #FA4612;
+$brand-color-tint: #faf9f3;
+
+$secondary-brand-color: #0070D1; // Link Blue
+$secondary-brand-color-light: #aadeff; // Highlight Blue
+$secondary-brand-color-medium: #239ADE; // Group Blue
+$secondary-brand-color-dark: #024474; // Text Blue
+
+$tertiary-brand-color: #008577; // Charity Teal
+
+
+// Info colors
+$info-color: $secondary-brand-color-light;
+
+// Success colors
+$success-color: $tertiary-brand-color;
+
+// Warning colors
+$warning-color: #f7901e;
+
+// Error colors
+$error-color: #dd362f;
+
+
+// Appearance
+// ---
+
+$font-color: $secondary-brand-color-dark;
+
+$callout-color: #FECD46;
+
+$link-color: $secondary-brand-color;
+$active-link-color: mix(white, $link-color, 15%);
+
+$focus-color: $secondary-brand-color;
+
+$border-color: $neutral-50;
+$border-radius: 4px;
+
+$input-background-color: $neutral-30;
+$disabled-input-color: $neutral-60;
+$disabled-input-background-color: $neutral-30;
+$horizontal-input-padding: $large-unit;
+$vertical-input-padding: $unit;
+
+$box-shadow-25: 0 2px 4px 0 rgba(0,0,0,0.25);
+
+$transition: all 0.1s ease-out;
+
+// Keyframes
+// ---
+
+@keyframes animate-up {
+    0% {
+        display: none;
+
+        opacity: 0;
+    }
+    1% {
+        display: block;
+
+        opacity: 1;
+
+        transform: translateY($unit);
+    }
+    100% {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+@keyframes animate-down {
+    0% {
+        transform: translateY(-100%)
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+// Layer (z-index)
+// ---
+
+// Organizes z-index usage by name. Values can be incremented/decremented
+// slightly as necessary. eg. $stage-layer + 1;
+
+$backdrop-layer:  1;    // background
+$stage-layer:     10;   // icon or other ui element
+$orchestra-layer: 100;  // modal shade or similar
+$frontrow-layer:  1000; // modal dialog or similar
+
+
+// Shorthand
+// ---
+//
+// Quick ways to write properties that you re-use often.
+
+$border: 1px solid $border-color;
+$border-light: 1px solid $neutral-40;
+$input-padding: $vertical-input-padding $horizontal-input-padding;
+
+
+// Configurable Variables
+// ---
+
+$h-space: $unit;
+$v-space: $unit;

@@ -1,0 +1,24 @@
+// InnerWrapper
+// ===
+//
+// Constrains content width and adds left and right padding.
+
+@import 'styles/_variables.scss';
+
+.c-inner-wrapper {
+    max-width: $wrapper-max;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+// Smaller wrapper
+.c-inner-wrapper.c--sm {
+    max-width: $wrapper-small;
+}
+
+
+// With Padding
+.c-inner-wrapper.c--padding {
+    padding-right: $unit;
+    padding-left: $unit;
+}

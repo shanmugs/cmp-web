@@ -1,0 +1,99 @@
+// Account Preview List Component
+// ===
+//
+// Displays a list of Accounts and if needed a link to open a list of all
+// accounts in a modal
+
+// Dependencies
+// ---
+@import 'styles/_variables.scss';
+@import 'styles/mixins/clearfix.scss';
+
+
+// Root component
+// ---
+
+.c-account-preview-list {
+    overflow: hidden; // This seems to fix some child elements from overflowing
+
+    background-color: #fbfbf8; // a one of color
+
+    .c-account-preview__content {
+        &:hover,
+        &:active,
+        &:focus {
+            .c-account-preview__name,
+            .c-account-preview__details {
+                color: $active-link-color;
+            }
+        }
+    }
+
+    .c-account-preview__details {
+        color: $neutral-60; // Overrides default link color
+    }
+}
+
+
+// More Button
+// ---
+
+.c-account-preview-list__more {
+    padding: $unit $xlarge-unit;
+    border: none;
+
+    background: none;
+
+    color: $link-color;
+    font-weight: $font-weight-demibold;
+
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+
+        color: $active-link-color;
+    }
+
+    .c-icon {
+        width: 2.5em; // Match size of Account Preview Avatar
+        height: 2.5em; // Match size of Account Preview Avatar
+        margin-right: $unit;
+        padding: $small-unit;
+        border: $border;
+
+        border-radius: 50%;
+    }
+}
+
+
+// Larger and Two Column Modifier
+// ---
+// Increase font size and show in 2 columns when displayed as modal content
+
+.c-account-preview-list.c--large {
+    @include clearfix;
+
+    background: none;
+
+    .c-account-preview {
+        font-size: $medium-font-size;
+    }
+
+    @media (min-width: $largeish) {
+        // Display Account Previews in 2 columns
+        .c-account-preview-list__item {
+            display: block;
+            float: left;
+            width: 50%;
+
+            &:nth-child(even) {
+                padding-left: $xlarge-unit;
+            }
+
+            &:nth-child(odd) {
+                padding-right: $xlarge-unit;
+            }
+        }
+    }
+}

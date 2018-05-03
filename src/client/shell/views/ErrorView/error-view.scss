@@ -1,0 +1,41 @@
+// ErrorMessage
+// ===
+//
+// Displays user friendly error message
+
+@import 'styles/_variables.scss';
+
+
+// Root Component
+// ---
+.c-error-view {
+    display: flex;
+    min-height: 80vh; // lame way to get the grey background to stretch to footer
+}
+
+.c-error-view__wrapper {
+    position: relative; // for absolutely positioned image
+
+    margin-top: 11em;
+
+    background-color: $neutral-35;
+
+    flex-grow: 1;
+}
+
+.c-error-view__img {
+    position: absolute;
+    top: -6em;
+    right: 0;
+    left: 0;
+
+    width: 146px;
+    height: 143px;
+    margin: 0 auto;
+}
+
+.c-error-view__content {
+    padding: 5em $unit $unit;
+
+    text-align: center;
+}

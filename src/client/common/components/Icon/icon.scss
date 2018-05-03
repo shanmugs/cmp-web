@@ -1,0 +1,36 @@
+@import 'styles/_variables.scss';
+
+.c-icon {
+    display: inline-flex;
+    align-items: center;
+    width: $icon__size;
+    height: $icon__size;
+
+    color: inherit;
+    vertical-align: middle;
+
+    fill: currentColor;
+    justify-content: center;
+
+    // CT-1328 A workaround for svg fills in Firefox. See http://stackoverflow.com/a/27872310
+    .firefox & {
+        use > svg {
+            fill: currentColor;
+        }
+    }
+}
+
+.c-icon.c--sm {
+    width: 0.75 * $icon__size;
+    height: 0.75 * $icon__size;
+}
+
+.c-icon.c--md {
+    width: 1.5 * $icon__size;
+    height: 1.5 * $icon__size;
+}
+
+.c-icon.c--lg {
+    width: 2 * $icon__size;
+    height: 2 * $icon__size;
+}

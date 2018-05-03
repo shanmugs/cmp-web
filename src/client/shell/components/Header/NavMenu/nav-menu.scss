@@ -1,0 +1,67 @@
+@import 'styles/variables';
+
+
+.c-header-nav-menu {
+    margin: 0;
+    padding: 0;
+
+    color: $link-color;
+
+    list-style: none;
+}
+
+.c-header-nav-menu__item {
+    display: inline-block;
+    margin: 0 $unit/2;
+
+    > a {
+        color: inherit;
+    }
+}
+
+// Styles for the hover underline effect that animates in
+.c-header-nav-menu__item-text {
+    position: relative;
+
+    display: inline-block;
+
+    margin: $unit;
+
+    font-weight: $font-weight-demibold;
+
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    &::after {
+        content: '';
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+        border-bottom: 2px solid;
+
+        opacity: 0;
+
+        transition: opacity 0.3s, transform 0.3s;
+        transform: translateY(-$small-unit);
+    }
+
+    .c-header-nav-menu__item:focus &,
+    .c-header-nav-menu__item:hover &,
+    .c-header-nav-menu__item.c--open & {
+        &::after {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+    }
+}
+
+// Alternate Style with Light Text
+// ---
+//
+
+.c-header-nav-menu.c--light-text {
+    color: $neutral-30;
+}

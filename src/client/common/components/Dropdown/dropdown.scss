@@ -1,0 +1,72 @@
+// Header Navigation Dropdown Contents
+// ===
+//
+
+
+// Root Component
+// ---
+
+.p-dropdown {
+
+}
+
+.p-dropdown__item {
+    position: relative; // For absolutely positioned content
+
+    &:active,
+    &:focus,
+    &:hover {
+        outline: none;
+    }
+}
+
+// Open State
+// ---
+
+.p-dropdown__item.p--open {
+    &:focus {
+        outline: none;
+    }
+}
+
+.p-dropdown__item-trigger {
+    cursor: pointer;
+}
+
+.p-dropdown__item-contents {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    display: none;
+
+    &.p--open {
+        display: block;
+    }
+}
+
+
+// Size Modifiers
+// ---
+
+.p-dropdown__item-contents {
+    &.p--sm {
+        width: 24em;
+    }
+
+    &.p--md {
+        width: 28em;
+    }
+
+    &.p--lg {
+        width: 38em;
+    }
+}
+
+// Orientation
+// ---
+
+.p-dropdown__item-contents.p--right {
+    left: auto;
+    right: 0;
+}

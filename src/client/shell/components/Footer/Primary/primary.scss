@@ -1,0 +1,73 @@
+// Secondary Footer Component
+// ===
+//
+
+@import 'styles/_variables.scss';
+
+// Local Variable
+// ---
+$footer-border-color: rgba($secondary-brand-color-light, 0.3);
+
+// Root Styles
+// ---
+
+.c-footer-primary {
+    display: flex;
+    padding: $xlarge-unit*2 $xlarge-unit*2 $xlarge-unit;
+
+    background-color: $secondary-brand-color-dark;
+
+    justify-content: space-between;
+
+    a {
+        color: $secondary-brand-color-light;
+
+        &:active,
+        &:focus,
+        &:hover {
+            color: $neutral-30;
+        }
+    }
+
+    .c-social-icons {
+        max-width: 11em; // Prevent icons from spreading too far apart
+    }
+}
+
+.c-footer-primary__section {
+    display: flex;
+    flex-direction: column;
+
+    &.c--right-align {
+        align-items: flex-end;
+    }
+}
+
+.c-footer-primary__link {
+    display: inline;
+
+    &.c--primary {
+        color: $neutral-30;
+        font-weight: $font-weight-demibold;
+
+        &:active,
+        &:focus,
+        &:hover {
+            color: $secondary-brand-color-light;
+        }
+    }
+
+    &.c--small {
+        font-size: $small-font-size;
+
+        .c-icon {
+            margin-left: $small-unit;
+
+            font-size: $small-font-size;
+        }
+    }
+
+    + .c-footer-primary__link {
+        margin-left: $xlarge-unit;
+    }
+}

@@ -1,0 +1,32 @@
+// Color utilities
+// ===
+//
+
+
+// Global Variables
+// ---
+@import 'styles/variables';
+
+
+// Backgrounds
+// ---
+
+.u-clr-bg-tint {
+    background-color: $brand-color-tint;
+}
+
+.u-clr-bg-secondary {
+    background-color: $secondary-brand-color;
+}
+
+.u-clr-bg-tertiary {
+    background-color: $tertiary-brand-color;
+}
+
+
+// Colors
+// ---
+
+.u-clr-brand {
+    color: $brand-color;
+}

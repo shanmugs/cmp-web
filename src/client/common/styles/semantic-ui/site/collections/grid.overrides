@@ -1,0 +1,6 @@
+.ui.grid {
+    .column[class*="center aligned"] {
+        align-items: center;
+        display: flex;
+    }
+}

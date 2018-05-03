@@ -1,0 +1,83 @@
+// Typography
+// ===
+
+
+// Headings
+// ---
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+
+    font-family: $font-family;
+    font-size: $font-size;
+    font-weight: $font-weight-demibold;
+    line-height: $line-height-title;
+}
+
+
+// Text Elements
+// ---
+
+p {
+    margin: 0 0 $large-unit;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $active-link-color;
+    }
+}
+
+b,
+strong {
+    font-weight: $font-weight-demibold;
+}
+
+
+// Miscellaneous Elements
+// ---
+
+// Horizontal Rule
+//
+// Markup:
+//     <hr>
+//
+// Style guide: global.headings
+
+hr {
+    margin: ($unit * 2) 0;
+    border: 1px solid $border-color;
+    border-width: 0 0 1px;
+}
+
+img {
+    max-width: 100%;
+    margin: 0;
+}
+
+// Blockquote
+//
+// Markup:
+//     <blockquote>An understanding of the natural world and what's in it is a source of not only a great curiosity but great fulfillment.
+//     I just wish the world was twice as big and half of it was still unexplored.
+//     Many individuals are doing what they can. But real success can only come if there is a change in our societies and in our economics and in our politics.</blockquote>
+//
+// Style guide: global.headings
+
+blockquote {
+    margin: ($unit * 2) 0;
+    padding-left: $unit;
+    border-left: 2px solid $border-color;
+
+    color: lighten($font-color, 15);
+}

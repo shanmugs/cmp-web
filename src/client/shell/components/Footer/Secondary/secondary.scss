@@ -1,0 +1,71 @@
+// Secondary Footer Component
+// ===
+//
+
+@import 'styles/_variables.scss';
+
+
+// Root Styles
+// ---
+
+.c-footer-secondary {
+
+    background-color: $secondary-brand-color-dark;
+
+    color: $secondary-brand-color-light;
+}
+
+.c-footer-secondary__inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: $xlarge-unit $large-unit $xlarge-unit*2;
+
+    @media (min-width: $mediumish) {
+        align-items: flex-start;
+        flex-direction: row;
+
+        padding: $xlarge-unit $xlarge-unit*2 $xlarge-unit*2;
+    }
+}
+
+.c-footer-secondary__logo {
+    display: block;
+    width: 2.25em;
+    height: 2.8em;
+    margin-right: $xlarge-unit;
+
+    color: $neutral-30;
+    fill: currentColor;
+}
+
+.c-footer-secondary__center {
+    text-align: center;
+
+    @media (min-width: $mediumish) {
+        margin-right: auto;
+
+        text-align: left;
+    }
+}
+
+.c-footer-secondary__copyright {
+    font-size: $small-font-size;
+    text-transform: uppercase;
+    letter-spacing: 0.1em; // CT-2181
+}
+
+.c-footer-secondary__badges {
+    display: flex;
+    padding-top: $xlarge-unit;
+
+    justify-content: center;
+
+    > a,
+    img {
+        margin: 0 $small-unit;
+    }
+
+    @media (min-width: $mediumish) {
+        padding-top: 0;
+    }
+}

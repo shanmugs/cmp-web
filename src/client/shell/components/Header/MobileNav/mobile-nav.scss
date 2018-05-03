@@ -1,0 +1,46 @@
+// Mobile Nav Menu
+// ===
+//
+// Lives in a mobile Off-Canvas Menu
+//
+
+@import 'styles/variables';
+
+
+// Root Styles
+// ---
+
+.c-header-mobile-nav {
+    background: white;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.45);
+    height: 100%;
+    margin-right: 4.5em;
+    padding-bottom: 4.5em; // workaround fix for CT-1304 on iOS 8
+    position: relative;
+    z-index: 100;
+
+    // Links with Foundation fighting specificity 👊
+    .c-link-list.c-link-list.c-link-list {
+        font-size: $medium-font-size;
+        line-height: $large-font-size;
+    }
+
+    .c-social-icons {
+        margin: 0 auto;
+        padding: $large-unit*2 $large-unit;
+    }
+}
+
+.c-nav-drawer-is-open .c-header-mobile-nav {
+    pointer-events: all;
+}
+
+
+// Header Section
+// ---
+
+.c-header-mobile-nav__header {
+    padding: $large-unit;
+
+    background-color: $neutral-35;
+}

@@ -1,0 +1,28 @@
+// FeatureCard
+// ===
+//
+// Configurable card to highlight features. Can include an icon, title, short description.
+
+@import 'styles/_variables.scss';
+
+// Library of mixins for common styling
+// @import '/bower_components/spline/dist/_spline.scss';
+
+// Root Component
+// ---
+.c-feature-card {
+    background-color: $neutral-30;
+}
+
+
+// Content Area
+.c-feature-card__content {
+    padding: $unit;
+}
+
+
+// Image
+.c-feature-card__img {
+    display: block;
+    max-width: 100%;
+}

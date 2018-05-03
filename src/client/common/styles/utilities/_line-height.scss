@@ -1,0 +1,25 @@
+// Line Height Utility
+// ===
+//
+// Ref: https://github.com/tachyons-css/tachyons/blob/master/src/_line-height.scss
+
+// Global Variables
+// ---
+@import 'styles/variables';
+
+
+// Classes
+// ---
+
+// Importants applied because our base typography specificty is bumped up to
+// handle foundation and legacy style conflicts.
+
+.u-lh-solid {
+    line-height: $line-height-small !important;
+}
+.u-lh-title {
+    line-height: $line-height-title !important;
+}
+.u-lh-copy {
+    line-height: $line-height !important;
+}

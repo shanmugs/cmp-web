@@ -1,0 +1,82 @@
+// Banner
+// ===
+//
+// Displays enticing info.
+
+@import 'styles/_variables.scss';
+
+// Root Component
+// ---
+// [1] Creates the layering effect of the banner on top of the tails. These properties are
+//     necessary to isolate the Stacking Context needed by the tails (::before & ::after's zindex)
+//     We SHOULD be using isolation: isolate, but guess who doesn't support it. translateZ is a
+//     hackaround.
+$banner-tail-height: $large-unit + $line-height;
+$banner-tail-width: ($unit * 4);
+
+.c-banner__wrapper {
+    margin-left: -($banner-tail-width / 0.75);
+    margin-right: -($banner-tail-width / 0.75);
+    transform: translateZ(0); // [1]
+}
+
+.c-banner {
+    background-color: $callout-color;
+    border: 2px solid $neutral-30;
+    border-radius: $border-radius;
+    font-weight: $font-weight-demibold;
+    margin:
+        0
+        ($banner-tail-width / 1.5) // ensures the tails have horizontal space
+        $banner-tail-height; // ensures nothing below covers the tails (which are outside doc flow)
+    padding: $large-unit;
+    position: relative;
+    text-align: center;
+
+    // Banner tails
+    // ---
+    // The gift-ribbon-like tails on either side of the banner.
+    //
+    // NOTES
+    // [2] Creates a triangle by cutting the pseudo-element box roughly in half. Overlaying 2 such
+    //     triangles creates a rectangle with a missing triangle.
+    // [3] These values should be 1% different, where the transparent stop is greater. This creates
+    //     an clean anti-aliased edge.
+    &::before,
+    &::after {
+        background: $callout-color;
+        background:
+            linear-gradient( // [2]
+                116deg,
+                $callout-color 0%,
+                $callout-color 61%, // [3]
+                rgba(255,255,255,0) 62% // [3]
+            ),
+            linear-gradient( // [2]
+                64deg,
+                $callout-color 0%,
+                $callout-color 61%, // [3]
+                rgba(255,255,255,0) 62% // [3]
+            );
+        border-radius: inherit;
+        content: '';
+        height: calc(100% - #{$unit});
+        position: absolute;
+        top: $banner-tail-height;
+        width: $banner-tail-width;
+        z-index: -1; // [1]
+    }
+
+    &::before {
+        left: 0;
+        transform:
+            translateX(-66%)
+            rotate(180deg); // you do NOT want to re-calc the gradient degree, which can change
+    }
+
+    &::after {
+        right: 0;
+        transform:
+            translateX(66%);
+    }
+}

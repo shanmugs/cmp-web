@@ -1,0 +1,56 @@
+// Social Icons Component
+// ===
+//
+
+@import 'styles/_variables.scss';
+@import 'styles/mixins/button.scss';
+
+// Displays social icons
+
+// Root Styles
+// ---
+
+.c-social-icons {
+    display: flex;
+    max-width: 20em;
+
+    justify-content: space-between;
+}
+
+
+// Icon Styles
+// ---
+
+.c-social-icons__icon {
+    @include button;
+
+    .c-icon {
+        color: $font-color;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+        .c-icon {
+            color: $active-link-color;
+        }
+    }
+}
+
+// Alternate Styles
+// ---
+// Light icons for use on dark backgrounds
+
+.c-social-icons__icon.c--light {
+    .c-icon {
+        color: $secondary-brand-color-light;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+        .c-icon {
+            color: $neutral-30;
+        }
+    }
+}

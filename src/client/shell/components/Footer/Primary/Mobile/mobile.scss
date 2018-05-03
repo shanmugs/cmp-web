@@ -1,0 +1,69 @@
+// Secondary Footer Component
+// ===
+//
+
+@import 'styles/_variables.scss';
+
+// Local Variable
+// ---
+$footer-border-color: rgba($secondary-brand-color-light, 0.3);
+
+// Root Styles
+// ---
+
+.c-footer-primary-mobile {
+    background-color: $secondary-brand-color-dark;
+
+    text-align: center;
+
+
+    .c-button {
+        border-color: $footer-border-color;
+    }
+
+    .c-icon {
+        color: $secondary-brand-color-light;
+    }
+}
+
+.c-footer-primary-mobile__section {
+    padding-top: $large-unit*2;
+    padding-right: $xlarge-unit*3;
+    padding-bottom: $large-unit;
+    padding-left: $xlarge-unit*3;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $footer-border-color;
+    }
+}
+
+.c-footer-primary-mobile__section-inner {
+    min-width: 12em;
+    max-width: 20em;
+    margin: 0 auto;
+
+    > .c-button {
+        display: block;
+        margin-bottom: $large-unit;
+        width: 100%;
+    }
+}
+
+.c-footer-primary-mobile__link {
+    display: block;
+    margin-bottom: $large-unit;
+}
+
+// with moar specificity
+a.c-footer-primary-mobile__link {
+    color: $secondary-brand-color-light;
+
+    &:hover {
+        color: $neutral-30;
+    }
+}
+
+// Social Icons modifier styles
+.c-footer-primary-mobile .c-social-icons {
+    margin-bottom: $xlarge-unit;
+}

@@ -1,0 +1,38 @@
+// Normalized Button
+// ===
+
+// Dependencies
+// ---
+@import 'styles/variables';
+
+// 1. Normalize border-radius across element types in iOS.
+// 2. Normalize `line-height` (for `input`, it can't be changed from `normal`
+//    in Firefox 4+).
+// 3. Ensure button text can wrap (`input` defaults to `pre`).
+// 4. Prevent button text from being selectable.
+// 5. Override default underline on anchor text when button is applied to an achor element
+//
+// Attribution: https://github.com/mobify/stencil/
+
+@mixin button {
+    display: inline-block;
+    background-color: transparent;
+    border-radius: $border-radius; // 1
+
+    font-family: $font-family;
+    line-height: normal; // 2
+    text-align: center;
+    text-decoration: none; // 5
+    white-space: normal; // 3
+
+    user-select: none; // 4
+
+    transition: all 0.135s ease-in-out;
+    font-weight: $font-weight-demibold;
+
+    &:active,
+    &:focus,
+    &:hover {
+        outline: none;
+    }
+}

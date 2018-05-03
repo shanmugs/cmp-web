@@ -1,0 +1,39 @@
+// Alerts
+// ===
+//
+// Displays a container at the beginning of a form with a list of errors
+
+@import 'styles/_variables.scss';
+
+// Root Component
+// ---
+//
+
+.c-alert {
+    width: 100%;
+    padding: $unit $large-unit;
+
+    border-radius: $border-radius;
+}
+
+.c-alert.c--info {
+    background-color: $info-color;
+}
+
+.c-alert.c--success {
+    background-color: $success-color;
+
+    color: $neutral-30;
+}
+
+.c-alert.c--warning {
+    background-color: $warning-color;
+
+    color: $neutral-30;
+}
+
+.c-alert.c--error {
+    background-color: $error-color;
+
+    color: $neutral-30;
+}

@@ -1,0 +1,19 @@
+// Header Give Dropdown Contents
+// ===
+//
+
+@import 'styles/variables';
+
+.c-header-give-contents {
+    > .c-give-cta:last-child {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+    }
+}
+
+.c-header-give-contents__heading {
+
+    &.c-header-give-contents__heading {
+        margin-bottom: $xlarge-unit; // Margin on h2 elements be needin extra specificity
+    }
+}

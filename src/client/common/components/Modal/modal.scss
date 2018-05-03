@@ -1,0 +1,152 @@
+// Modal Component
+// ===
+//
+
+
+// Dependencies
+// ---
+@import 'styles/_variables.scss';
+@import 'styles/mixins/clearfix.scss';
+@import 'styles/mixins/button.scss';
+
+
+// Root Component
+// ---
+
+.c-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: $stage-layer;
+
+
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+
+    animation: animate-down 0.1s ease-out;
+}
+
+
+// Inner Wrapper
+// ---
+//
+// Prevent modal contents from stretching out full width
+
+.c-modal__inner-wrapper {
+    display: flex;
+
+    // Workaround for Modernizer's flexbox assesment of IE10
+    .flexbox.flexboxtweener & {
+        display: flex;
+    }
+
+    .no-flexboxlegacy & {
+        @include clearfix;
+
+        display: block;
+    }
+}
+
+// Modal Header
+// ---
+//
+
+.c-modal__header {
+    // Establish the height of the close icon for calculating the minimum height of the modal header
+    $closeIconHeight: ($small-unit*2)+$icon__size;
+
+    position: relative;
+    z-index: $orchestra-layer;
+
+    padding: $large-unit;
+    // Prevents the modal__header from collapsing at very short resolutions (mobile with keyboards
+    // open). min-height is the padding height plus the height of the largest child element
+    min-height: ($large-unit*2)+$closeIconHeight;
+
+    background-color: $neutral-30;
+    box-shadow: 0 2px 2px 0 rgba($neutral-50,0.5);
+    @media (min-width: $mediumish) {
+        padding: $xlarge-unit;
+        // Min height has to adjust with the padding
+        min-height: ($xlarge-unit*2)+$closeIconHeight;
+    }
+}
+
+.c-modal__title {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+
+    @media (min-width: $mediumish) {
+        margin-left: $xlarge-unit; // Balance out spacing around Close icon
+    }
+    .no-flexboxlegacy & {
+        float: left;
+        width: 85%; // leave space for the close button;
+    }
+}
+
+.c-modal__title-string.c-modal__title-string {
+    // CT-1525 This font size accomodates longer titles in ipad portrait
+    font-size: $medium-font-size;
+
+    @media (min-width: $largeish) {
+        font-size: $large-font-size;
+    }
+}
+
+.c-modal__close {
+    @include button;
+
+    display: inline-flex;
+    padding: $small-unit;
+
+    color: $link-color;
+    border: 1px solid;
+    border-color: rgba($link-color, 0.45);
+
+    align-self: center;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: 0;
+        color: $neutral-30;
+        border-color: $secondary-brand-color;
+        background-color: $secondary-brand-color;
+    }
+
+    .no-flexboxlegacy & {
+        float: right;
+    }
+}
+
+
+// Modal Contents Container
+// ---
+//
+
+.c-modal__content {
+    max-height: 100%;
+    overflow-y: scroll;
+
+    padding: $large-unit;
+
+    background-color: $neutral-30;
+    box-shadow: $box-shadow-25;
+
+    transition: $transition;
+    &.c--active {
+        transform: translateY(0);
+    }
+    &.c--hide {
+        transform: translateY(-100%);
+    }
+    @media (min-width: $mediumish) {
+        padding: $xlarge-unit;
+    }
+}

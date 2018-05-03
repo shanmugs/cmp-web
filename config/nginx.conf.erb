@@ -1,0 +1,167 @@
+daemon off;
+# NGINX build back will automatically set this two
+worker_processes <%= ENV['NGINX_WORKERS'] %>;
+pid /app/nginx.pid;
+error_log stderr;
+
+# Better performance when serving static files
+events {
+  use epoll;
+  accept_mutex on;
+  worker_connections 1024;
+}
+
+http {
+  # Compression for faster load times, turned on by default
+  <% if ENV['NGINX_GZIP_ENABLED'] == '1' %>
+  gzip on;
+  gzip_disable msie6;
+  gzip_min_length 512;
+  gzip_proxied <%= ENV['NGINX_GZIP_PROXIED'] %>;
+  gzip_types <%= ENV['NGINX_GZIP_TYPES'] %>;
+  <% end %>
+
+  log_format l2met 'measure#nginx.service=$request_time request_id=$http_x_request_id';
+  access_log error l2met;
+
+  include mime.types;
+  default_type application/octet-stream;
+  sendfile on;
+
+  # Increase default upload size from 1M to allow uploading larger images.
+  client_max_body_size 100M;
+
+  # Where it will listen to for a local socket
+  # upstream = web client
+  upstream app_server {
+    server <%= ENV['NGINX_SOCKET'] %> fail_timeout=0;
+  }
+
+  # SSL Forwarding
+  # server = nginx proxy
+  server {
+    listen <%= ENV['NGINX_LISTEN'] %> default_server;
+    server_name _;
+    return 301 https://<%= ENV['APP_HOSTNAME'] %>$request_uri;
+  }
+
+  # Routing section
+  server {
+    listen <%= ENV['NGINX_LISTEN'] %>;
+    server_name <%= ENV['APP_HOSTNAME'] %>;
+    keepalive_timeout 5;
+    root /app/dist;
+    port_in_redirect off;
+
+    # Proxy settings for gemini
+    # X-Forwarded-For = IP address
+    # Host = Domain name
+    location @gemini {
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_redirect off;
+      proxy_pass http://app_server;
+    }
+
+    # proxy_redirect: we can't use relative URLs, only absolute.
+    # And if we use absolute URLs, then we can't use try_files
+    location / {
+      proxy_ssl_server_name on;
+      proxy_redirect <%= ENV['RAILS_APP_PROXY_URL'] %> <%= ENV['APP_PROXY_URL'] %>;
+      proxy_pass <%= ENV['RAILS_APP_PROXY_URL'] %>;
+    }
+
+    # This is safe because rails app serves js from /assets
+    location /js {
+      root /app/dist/js;
+      gzip_static on;
+      add_header Access-Control-Allow-Origin *;
+      try_files $uri @gemini;
+    }
+
+    # Serves js/css source maps
+    # Commented out because needs security review
+    #location /map {
+    #  root /app/dist/map;
+    #  gzip_static on;
+    #  add_header Access-Control-Allow-Origin *;
+    #  try_files $uri @gemini;
+    #}
+
+    location /give/error {
+      try_files $uri @gemini;
+    }
+
+    location /blog {
+      proxy_redirect off;
+      proxy_pass <%= ENV['BLOG_PROXY_URL'] %>;
+    }
+
+    location /strategies {
+      proxy_redirect off;
+      proxy_pass <%= ENV['STRATEGIES_PROXY_URL'] %>;
+    }
+
+    location /giving-in-canada {
+      proxy_redirect off;
+      proxy_pass <%= ENV['GIVING-IN-CANADA_PROXY_URL'] %>;
+    }
+
+    ###################################### Chimp Legacy Redirects ######################################
+    rewrite ^/giveon http://giveon.chimp.net;
+
+    # 2015 Marketing Refresh updates
+    rewrite ^/business$                 /workplace permanent;
+    rewrite ^/donors$                   /individuals permanent;
+    rewrite ^/forsports$                /sports permanent;
+    rewrite ^/jobs$                     /careers permanent;
+
+    rewrite ^/2012olympians$            / permanent;
+    rewrite ^/missionsfest$             / permanent;
+    rewrite ^/ten-ways-business$        / permanent;
+    rewrite ^/ten-ways-giving-group$    / permanent;
+    rewrite ^/ten-ways-personal$        / permanent;
+    rewrite ^/how-chimp-works$          / permanent;
+
+    rewrite ^/board-and-advisors$       /chimp-foundation#advisors permanent;
+    rewrite ^/chimp-for-business$       /workplace permanent;
+    rewrite ^/chimp-for-raising-money$  /giving-groups permanent;
+    rewrite ^/company-tour$             /workplace permanent;
+    rewrite ^/group-tour$               /giving-groups permanent;
+    rewrite ^/who-is-chimp$             /team permanent;
+    rewrite ^/ccf-request$              /charities permanent;
+    rewrite ^/tour$                     /accounts permanent;
+
+    # CT-1514
+    rewrite ^/giving-securities$        /types-of-donations;
+    rewrite ^/assets$                   /brand;
+    rewrite ^/fundagreement$            /chimp-account-agreement;
+
+    # due to type-o in newspaper. laaaame sauce.
+    rewrite ^/groups/teamfalcons        /groups/team-falcons permanent;
+
+    # due to messed up coms something or other?
+    rewrite ^/stenner                   /groups/stenner-investment-partners-for-mental-health permanent;
+
+    # the next line can be removed when CBR is done
+    rewrite ^/letstalk(.*)$             /claras-big-ride$1 permanent;
+    rewrite ^/clarasbigride(.*)$        /claras-big-ride$1 permanent;
+    rewrite ^/quebec-et-clara$          /quebecetclara permanent;
+
+    # next two lines are for a print mailout we did
+    rewrite ^/feefree$                  /charities?utm_source=disbursement&utm_medium=print&utm_content=special_mental_health_disbursement&utm_campaign=charities&utm_term=feefree redirect;
+    rewrite ^/donatebutton$             /charities?utm_source=disbursement&utm_medium=print&utm_content=special_mental_health_disbursement&utm_campaign=charities&utm_term=donatebutton redirect;
+    rewrite ^/playbetter$               http://playbetter.chimp.net redirect;
+
+    # for the family day at scienceworld stuff
+    rewrite ^/familygiving$             http://go.chimp.net/familygiving redirect;
+    rewrite ^/scienceworld$             http://go.chimp.net/scienceworld redirect;
+    rewrite ^/claim$                    http://go.chimp.net/claim redirect;
+
+    # impact CT-2729
+    rewrite ^/impact$                   http://go.chimp.net/impact redirect;
+
+    # CT-2828
+    rewrite ^/summerofchange$           https://chimp.net/companies/summerofchange2016-12ef46ed-c8ce-4e96-9277-4166dbf0abbe/join;
+  }
+}

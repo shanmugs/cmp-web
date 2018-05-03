@@ -1,0 +1,87 @@
+// FloatLabel
+// ===
+//
+// Creates a textbox with a label that floats up when user enters text
+
+// get access to our global variables by un-commenting this line
+@import 'styles/_variables.scss';
+
+
+// Root Component
+// ---
+.c-float-label-input {
+    position: relative; // for absolutely positioned label
+
+    width: 100%;
+}
+
+
+// Float Label
+// ---
+
+.c-float-label-input__label {
+    @include font-size($small-font-sizes);
+
+    position: absolute;
+
+    margin-left: $large-unit + $small-unit; // compensate for font size relative to input padding
+
+    color: $secondary-brand-color;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+
+    transition: all 0.1s ease-in-out;
+}
+
+.c-float-label-input.c--hide .c-float-label-input__label {
+    opacity: 0;
+
+    transform: translateY($large-unit);
+}
+
+.c-float-label-input.c--show .c-float-label-input__label {
+    opacity: 1;
+
+    transform: translateY($unit);
+}
+
+// Disabled
+.c-float-label-input.c--is-disabled {
+    background-color: $neutral-40;
+}
+
+
+// Input
+// ---
+
+.c-float-label-input__input {
+    width: 100%;
+    padding: $large-unit;
+    border: $border;
+
+    background-color: $neutral-30;
+    border-radius: $border-radius;
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
+}
+
+
+// Active
+.c-float-label-input.c--show .c-float-label-input__input {
+    padding-top: $large-unit + $unit;
+    padding-bottom: $large-unit - $unit;
+}
+
+// Disabled
+.c-float-label-input.c--has-error .c-float-label-input__input {
+    border-color: $error-color;
+}
+
+.c-float-label-input.c--has-error .c-float-label-input__label {
+    color: $error-color;
+}
+
+//missing error font color and background color, and border color

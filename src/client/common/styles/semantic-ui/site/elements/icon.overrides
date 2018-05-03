@@ -1,0 +1,5 @@
+i.icon {
+    &:only-child {
+        margin: 0;
+    }
+}

@@ -1,0 +1,29 @@
+// ColumnBorder
+// ===
+//
+// Displays content in columns with borders
+
+// get access to our global variables by un-commenting this line
+@import 'styles/_variables.scss';
+
+
+// Root Component
+// ---
+.c-column-border {
+    display: flex;
+    width: 100%;
+    border-top: $border-light;
+    border-bottom: $border-light;
+
+    justify-content: center;
+}
+
+.c-column-border__item {
+    max-width: 15rem;
+    padding: $xlarge-unit;
+    border-left: $border-light;
+
+    &:last-of-type {
+        border-right: $border-light;
+    }
+}

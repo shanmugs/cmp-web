@@ -1,0 +1,43 @@
+.phonenumber {
+    display: inline;
+}
+
+.phonenumber-country {
+    &::after {
+        content: '';
+        padding-right: 0.2em;
+    }
+
+    & + .phonenumber-area {
+        &::after,
+        &::before {
+            display: inline;
+        }
+        &::after {
+            content: ')';
+        }
+        &::before {
+            content: '(';
+        }
+    }
+}
+
+.phonenumber-area {
+    &::after {
+        display: inline;
+    }
+    &::after {
+        content: '–';
+    }
+}
+
+.phonenumber-exchange {
+    &::after {
+        content: '–';
+        display: inline;
+    }
+
+    .phonenumber-area + & {
+        padding-left: 0.2em;
+    }
+}

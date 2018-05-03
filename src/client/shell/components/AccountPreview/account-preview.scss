@@ -1,0 +1,90 @@
+// Account Preview
+// ===
+//
+// Displays an account preview with avatar, balance and type.
+// Used in Account Switcher menu.
+
+
+// Dependencies
+// ---
+@import 'styles/_variables.scss';
+@import 'styles/mixins/ellipsis.scss';
+
+
+// Root Component
+// ---
+
+.c-account-preview {
+    display: flex;
+    align-items: center;
+    padding: $unit $xlarge-unit;
+}
+
+.c-account-preview__avatar {
+    flex: 0 0 auto;
+
+    width: 2.5em; // Set avatar size
+    height: 2.5em; // Set avatar size
+    border: 2px solid $border-color;
+
+    border-radius: 50%;
+}
+
+.c-account-preview__content {
+    flex: 1 1 auto;
+    overflow: hidden; // Somehow need for ellipsis to work on .c-account-preview__name
+    margin-left: $unit;
+}
+
+.c-account-preview__name {
+    @include ellipsis;
+
+    font-weight: $font-weight-demibold;
+}
+
+.c-account-preview__details {
+    display: flex;
+
+    font-size: $small-font-size;
+}
+
+.c-account-preview__balance {
+    flex: 1 0 auto;
+    margin-right: $unit;
+}
+
+
+// Current Account Modifier
+// ---
+
+.c-account-preview.c--current {
+    background-color: $brand-color;
+    background-image: url('../../images/Pattern_Account2x.png');
+    background-size: 78px 50px;
+
+    color: $neutral-30;
+
+    .c-account-preview__name {
+        color: $neutral-30;
+    }
+}
+
+
+// Current Account Company Modifier
+// ---
+
+.c-account-preview.c--current.c--company {
+    background-color: $secondary-brand-color-dark;
+    background-image: url('../../images/Pattern_Company2x.png');
+    background-size: 137px 137px;
+}
+
+
+// Current Account Charity Modifier
+// ---
+
+.c-account-preview.c--current.c--charity {
+    background-color: $secondary-brand-color;
+    background-image: url('../../images/Pattern_Charity2x.png');
+    background-size: 115px 115px;
+}

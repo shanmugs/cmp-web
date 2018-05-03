@@ -1,0 +1,232 @@
+// Forms
+// ===
+
+$forms__border-color: $border-color;
+
+// General Form Elements
+// ---
+
+fieldset {
+    min-width: 0;
+    margin: 0 0 $unit;
+    padding: 0;
+    border: 0;
+}
+
+// CT-4441 Set button font family at element level for legacy buttons
+button {
+    font-family: $font-family;
+}
+
+input,
+label,
+textarea,
+select {
+    color: $font-color;
+    font-family: $font-family;
+}
+
+// On smaller screens set font size to be at least 16px to prevent iOS
+// auto zooming of inputs
+input,
+select {
+    font-size: 115%; // relative to html font size of 87.5% in _general.css
+
+    @media (min-width: $mediumish) {
+        font-size: $font-size;
+    }
+}
+
+label {
+    display: inline-block;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    &:active {
+        color: $active-link-color;
+    }
+}
+
+select,
+textarea,
+[type="text"],
+[type="search"],
+[type="password"],
+[type="tel"],
+[type="url"],
+[type="number"],
+[type="email"] {
+    border-width: 1px;
+    border-style: solid;
+    border-color: $forms__border-color;
+
+    background-color: $input-background-color;
+
+    line-height: $line-height;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+
+    // Hides a small "x" in IE10+ for clearing the field
+    &::-ms-clear {
+        display: none;
+    }
+
+    &:active,
+    &:focus {
+        border-color: $focus-color;
+    }
+}
+
+
+// Search input
+// ---
+//
+// These properties must be set with a slightly higher specificity for search
+// inputs because Normalize's defaults are a bit too specific
+
+input[type="search"] {
+    box-sizing: border-box;
+
+    -webkit-appearance: none;
+}
+
+
+// Select
+// ---
+//
+// 1. Restore browser default styling. If you’re taking full control of select
+//    styling, remove both these lines.
+
+select {
+    height: $tap-size; // 1
+    -webkit-appearance: menulist-button; // 1
+}
+
+
+// Checkbox and Radios
+// ---
+
+[type="checkbox"],
+[type="radio"] {
+    position: relative;
+    width: $large-unit*2;
+    height: $large-unit*2;
+    margin-right: $large-unit;
+    border: 1px solid $forms__border-color;
+
+    background: $neutral-30;
+
+    vertical-align: middle;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    -webkit-appearance: none;
+
+    &:active,
+    &:focus {
+        border-color: $focus-color;
+
+        outline: none;
+    }
+
+    &:checked {
+        background: $neutral-30;
+
+        &::after {
+            content: '';
+
+            position: absolute;
+
+            display: block;
+        }
+    }
+}
+
+[type="radio"] {
+    border-radius: 50%;
+
+    &:after {
+        top: 20%;
+        right: 20%;
+        bottom: 20%;
+        left: 20%;
+
+        border-radius: 50%;
+        background: $neutral-60;
+    }
+}
+
+[type='checkbox'] {
+    &:checked {
+        &:after {
+            content: '';
+
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            background-image: url('/encoded/checkmark.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 65%;
+
+            color: $neutral-70;
+            font-family: $font-family;
+            font-size: $medium-font-size;
+            line-height: $font-size;
+        }
+    }
+}
+
+
+// Buttons
+// ---
+
+button,
+[type="submit"] {
+    display: inline-block;
+    padding: $input-padding;
+
+    line-height: $line-height;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+}
+
+
+// Disabled
+// ---
+//
+// 1. Disabled style for button, checkbox, radio, input and select
+// 2. Checkbox and Radio style
+
+[readonly],
+[disabled] {
+    opacity: 0.45;
+
+    background: $disabled-input-background-color;
+
+    color: $disabled-input-color;
+
+    // 1
+    &:active,
+    &:checked {
+        border-color: $disabled-input-color;
+
+        background: $disabled-input-background-color;
+    }
+
+    // 2
+    &:active,
+    &:checked {
+        &::after {
+            color: $disabled-input-color;
+        }
+    }
+
+    &[type="radio"]:after {
+        background-color: $disabled-input-color;
+    }
+}

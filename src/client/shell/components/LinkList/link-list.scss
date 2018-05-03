@@ -1,0 +1,31 @@
+// Link List Component
+// ===
+//
+
+@import 'styles/_variables.scss';
+
+// Displays a list of links
+
+// Root Styles
+// ---
+
+.c-link-list {
+
+}
+
+
+// Link Item
+// ---
+
+.c-link-list__item {
+
+}
+
+// Large List Modifier
+// ---
+.c-link-list.c--large {
+    .c-link-list__item {
+        margin-bottom: $unit;
+        font-size: $medium-font-size;
+    }
+}

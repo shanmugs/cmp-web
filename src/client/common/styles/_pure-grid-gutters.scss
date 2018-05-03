@@ -1,0 +1,23 @@
+// Extend Pure Grid to have Gutters
+// ===
+//
+
+// Set Font font-family
+.pure-g [class *= "pure-u"] {
+    font-family: $font-family;
+}
+
+.pure-g--gutters {
+    box-sizing: border-box;
+
+    // Bump up specificity for interaction with base styles scoped to bonobo
+    &.pure-g--gutters {
+        margin-left: -$unit;
+        margin-right: -$unit;
+    }
+
+    > [class*='pure-u'] {
+        box-sizing: border-box;
+        padding: 0 $unit;
+    }
+}

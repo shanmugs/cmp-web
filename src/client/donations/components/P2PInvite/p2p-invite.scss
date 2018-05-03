@@ -1,0 +1,28 @@
+// P2pInvite
+// ===
+//
+// View for P2P Invite landing page
+
+@import 'styles/_variables.scss';
+
+// Library of mixins for common styling
+// @import '/bower_components/spline/dist/_spline.scss';
+
+// Root Component
+// ---
+.v-p2p-invite {
+    .c-configurable-header {
+        margin-bottom: $unit *4;
+    }
+
+    .c-expandable-text__text {
+        margin-bottom: $small-unit;
+    }
+
+    .c-expandable-text__expand-link {
+        padding-top: $small-unit;
+
+        font-size: $small-font-size;
+        font-weight: normal;
+    }
+}

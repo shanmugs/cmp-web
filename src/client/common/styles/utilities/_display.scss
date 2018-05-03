@@ -1,0 +1,20 @@
+// Display Utilities
+// ===
+//
+// Ref: https://github.com/tachyons-css/tachyons/blob/master/src/_display.css
+
+// Base:
+//  d = display
+//
+// Modifiers:
+//  b     = block
+//  ib    = inline-block
+
+
+.u-di {
+    display: inline;
+}
+
+.u-db {
+    display: block;
+}

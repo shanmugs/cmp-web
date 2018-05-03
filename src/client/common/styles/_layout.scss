@@ -1,0 +1,24 @@
+// Layout Styles for Sticky Footer
+
+@import 'variables';
+
+  .layout {
+    // Sticky Footer CT-2181
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.layout__header,
+.layout__footer {
+    flex: 0 0 auto; // CT-2284 workaround for safari flexbox bug
+
+    .flexboxtweener & {
+        width: 100%; // so IE11 plays nice
+    }
+}
+
+.layout__content {
+    // Sticky Footer CT-2181
+    flex: 1 0 auto;
+}
