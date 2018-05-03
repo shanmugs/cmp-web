@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Chimp Web App
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
@@ -170,3 +171,6 @@ Gemini uses the [Electrode](https://docs.electrode.io/overview/what-is-electrode
 [travis-url]: https://travis-ci.org/ChimpTech/chimp
 [daviddm-image]: https://david-dm.org/ChimpTech/chimp.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/ChimpTech/chimp
+=======
+# cmp-web
+>>>>>>> d230f15c6ac26cf01e8bf25e77ce0a65451a9758
