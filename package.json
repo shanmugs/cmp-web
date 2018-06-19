@@ -47,7 +47,9 @@
     "postinstall": "node fix-semantic.js",
     "start": "node lib/server/index.js",
     "test": "clap test-ci",
-    "test-frontend": "clap test-frontend"
+    "test-frontend": "clap test-frontend",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -99,7 +101,8 @@
     "svg-sprite-loader": "^0.2.0",
     "uuid": "^3.1.0",
     "whatwg-fetch": "^2.0.3",
-    "winston": "^2.4.1"
+    "winston": "^2.4.1",
+    "snyk": "^1.83.0"
   },
   "devDependencies": {
     "ajv": "^6.1.1",
@@ -136,5 +139,6 @@
     "webpack": "^3.11.0",
     "yargs": "^8.0.2"
   },
-  "private": true
+  "private": true,
+  "snyk": true
 }
