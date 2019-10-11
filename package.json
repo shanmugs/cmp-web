@@ -78,7 +78,7 @@
     "intl": "^1.2.5",
     "intl-locales-supported": "^1.0.0",
     "lodash": "^4.17.5",
-    "newrelic": "^3.3.0",
+    "newrelic": "^5.13.1",
     "node-sass": "^4.7.2",
     "normalize.css": "^7.0.0",
     "payment": "^2.3.0",
